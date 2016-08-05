@@ -1,0 +1,24 @@
+{
+  "presets": [
+    "es2015",
+    "react"
+  ],
+  "plugins": [
+    "transform-decorators-legacy",
+    "transform-class-properties",
+    "transform-object-rest-spread",
+    "transform-async-to-generator",
+    "transform-async-to-module-method",
+    ["transform-runtime", {
+      "polyfill": false,
+      "regenerator": true
+    }]
+  ],
+  "env": {
+    "start": {
+      "presets": [
+        "react-hrme"
+      ]
+    }
+  }
+}
