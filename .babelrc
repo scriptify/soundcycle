@@ -1,9 +1,8 @@
 {
-  "presets": [
-    "es2015",
-    "react"
-  ],
+  "presets": [ "es2015" ],
   "plugins": [
+    "syntax-jsx",
+    "inferno",
     "transform-decorators-legacy",
     "transform-class-properties",
     "transform-object-rest-spread",
@@ -13,12 +12,5 @@
       "polyfill": false,
       "regenerator": true
     }]
-  ],
-  "env": {
-    "start": {
-      "presets": [
-        "react-hrme"
-      ]
-    }
-  }
+  ]
 }

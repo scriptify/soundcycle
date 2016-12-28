@@ -1,7 +1,7 @@
 {
-  "name": "simple-notes",
+  "name": "soundcycle",
   "version": "1.0.0",
-  "description": "A simple starter project for React development.",
+  "description": "soundcycle - the first real software loopstation",
   "main": "index.js",
   "scripts": {
     "start:dev": "webpack-dev-server",
@@ -13,7 +13,8 @@
   "devDependencies": {
     "babel-core": "*",
     "babel-loader": "*",
-    "babel-preset-react": "*",
+    "babel-plugin-inferno": "^1.2.0-beta12",
+    "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-async-to-generator": "*",
     "babel-plugin-transform-async-to-module-method": "*",
     "babel-plugin-transform-class-properties": "*",
@@ -23,6 +24,7 @@
     "babel-polyfill": "*",
     "babel-preset-es2015": "*",
     "css-loader": "*",
+    "file-loader": "*",
     "image-webpack-loader": "*",
     "npm-install-webpack-plugin": "*",
     "postcss-cssnext": "*",
@@ -31,14 +33,10 @@
     "webpack": "*",
     "webpack-dev-server": "*",
     "webpack-merge": "*",
-    "worker-loader": "*",
-    "file-loader": "*"
+    "worker-loader": "*"
   },
   "dependencies": {
-    "es6-promise": "*",
-    "react": "*",
-    "react-dom": "*",
-    "whatwg-fetch": "*",
-    "uuid": "*"
+    "inferno": "^1.0.0-beta23",
+    "soundcyclejs": "file:///home/scriptify/DEV/soundcyclejs"
   }
 }

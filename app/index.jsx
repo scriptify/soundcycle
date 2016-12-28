@@ -1,9 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import Inferno from 'inferno';
 
-ReactDOM.render(
+Inferno.render(
   <h1
     style={{fontFamily: 'Arial, serif', textAlign: 'center', backgroundColor: 'rebeccapurple', color: 'white', padding: '20px'}}>
       Hello. I am a simple starter project. If you see this text, everything was correctly setup.
-  </h1>, 
+  </h1>,
   document.querySelector('#app'));
