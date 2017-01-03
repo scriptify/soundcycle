@@ -1,0 +1,24 @@
+@import "../variables.css";
+
+.effects-editor {
+  padding: 5px;
+
+  & h1 {
+    text-align: center;
+    font-size: 16pt;
+  }
+
+
+  & .effects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    & > div.effect {
+      margin-right: 5px;
+      margin-top: 10px;
+    }
+
+  }
+
+}

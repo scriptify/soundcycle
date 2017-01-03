@@ -1,0 +1,34 @@
+@import "../variables.css";
+
+body {
+  font-family: Ubuntu, Calibri, Roboto, sans;
+  color: #FFF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.bottom-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--primary-color);
+}
+
+.top-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.app-content {
+  position: fixed;
+  top: 60px;
+  background: var(--primary-color);
+  height: calc(100% - 175px);
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}

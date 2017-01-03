@@ -44,7 +44,7 @@ const COMMON_CONFIGURATION = {
             'file?hash=sha512&digest=hex&name=[hash].[ext]',
             'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
         ],
-        include: PATHS.img
+        include: PATHS.app
       }, {
         test: /\.worker.js$/,
         loaders: ['worker-loader', 'babel?cacheDirectory'],

@@ -37,6 +37,8 @@
   },
   "dependencies": {
     "inferno": "^1.0.0-beta23",
+    "inferno-component": "^1.0.1",
+    "inferno-mobx": "^1.0.3",
     "soundcyclejs": "file:///home/scriptify/DEV/soundcyclejs"
   }
 }

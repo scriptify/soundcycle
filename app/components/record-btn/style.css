@@ -1,0 +1,15 @@
+@import "../variables.css";
+
+.record-btn {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background: var(--red);
+}
+
+.record-btn.recording {
+  height: 30px;
+  width: 30px;
+  border-radius: 0;
+  background: var(--dark);
+}

@@ -1,8 +1,11 @@
 import Inferno from 'inferno';
+import { Provider } from 'inferno-mobx'
+
+import App from './components/app';
+import uiStore from './stores/uiStore';
 
 Inferno.render(
-  <h1
-    style={{fontFamily: 'Arial, serif', textAlign: 'center', backgroundColor: 'rebeccapurple', color: 'white', padding: '20px'}}>
-      Hello. I am a simple starter project. If you see this text, everything was correctly setup.
-  </h1>,
+  <Provider uiStore={ uiStore }>
+    <App />
+  </Provider>,
   document.querySelector('#app'));

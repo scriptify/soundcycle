@@ -1,0 +1,32 @@
+@import "../variables.css";
+
+.edit-effects {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 50px;
+
+  & img {
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+  }
+
+}
+
+.edit-effects.small {
+  height: 20px;
+  width: 20px;
+  & img {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+  }
+}
+
+.edit-effects:hover img,
+.edit-effects:active img,
+.edit-effects:focus img {
+  border: dashed 4px var(--secondary-color);
+}

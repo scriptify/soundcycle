@@ -14,14 +14,14 @@ export default class LoopstationAPI {
   recorderChnlId = 'RECORDER_ID';
 
   constructor(readyCb = () => {}) {
-    const audioCtx = new (window.webkitAudioContext || window.AudioContext)();
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     this.soundcycle = new SoundCycle(audioCtx, readyCb);
-    this.MODES = this.soundcycle.MODES;
+    this.MODES = this.soundcycle.recorder.MODES;
     this.currentMode = this.MODES.NEW_LANE;
   }
 
   getModes() {
-    return this.soundcycle.modes;
+    return this.MODES;
   }
 
   setMode(mode) {
@@ -43,27 +43,27 @@ export default class LoopstationAPI {
     switch(this.currentMode) {
 
       case this.MODES.NEW_LANE:
-        const { chnlId, laneId, looper, audioChnl } = await this.soundcycle.recorder.stopRecording( this.currentMode, {
+        const { chnlId: firstTrackId, laneId: newLaneId, looper: newLooper, audioChnl: firstAudioChnl } = await this.soundcycle.recorder.stopRecording( this.currentMode, {
           onPlay: id => this.onTrackPlay(id),
           onStop: id => this.onTrackStop(id)
         });
         // Got looper and newly added chnl
         // add them to local arrays
-        this.addTrack(audioChnl, chnlId);
-        this.addLooper(looper, laneId);
+        this.addTrack(firstAudioChnl, firstTrackId);
+        this.addLooper(newLooper, newLaneId);
 
         return {
-          chnlId,
-          laneId
+          chnlId: firstTrackId,
+          laneId: newLaneId
         };
 
 
       case this.MODES.SINGLE_SEQUENCE:
-        const { audioChnl, id } = await this.soundcycle.recorder.stopRecording(this.currentMode);
-        this.addTrack(audioChnl, id);
+        const { audioChnl: singleSeqChnl, id: singleSeqId } = await this.soundcycle.recorder.stopRecording(this.currentMode);
+        this.addTrack(singleSeqChnl, singleSeqId);
 
         return {
-          chnlId: id
+          chnlId: singleSeqId
         };
 
 
@@ -73,15 +73,15 @@ export default class LoopstationAPI {
         if(!looper)
           throw new Error('No lane was selected!');
 
-        const { audioChnl, chnlId } = await this.soundcycle.recorder.stopRecording(this.currentMode, {
+        const { audioChnl: newLaneChnl, chnlId: newLaneChnlId } = await this.soundcycle.recorder.stopRecording(this.currentMode, {
           looper,
           laneId: this.currentLane
         });
 
-        this.addTrack(audioChnl, chnlId, this.currentLane);
+        this.addTrack(newLaneChnl, newLaneChnlId, this.currentLane);
 
         return {
-          chnlId
+          chnlId: newLaneChnlId
         };
     }
 
@@ -94,7 +94,7 @@ export default class LoopstationAPI {
       return;
 
     if(!track.laneId) {
-      track.start();
+      track.audioChnl.start();
       return;
     }
 
@@ -104,7 +104,7 @@ export default class LoopstationAPI {
     if(!looper)
       throw new Error('You tried to start a track of an inexistent lane!');
 
-    looper.play(id):
+    looper.play(id);
 
   }
 
@@ -115,7 +115,7 @@ export default class LoopstationAPI {
       return;
 
     if(!track.laneId) {
-      track.stop();
+      track.audioChnl.stop();
       return;
     }
 
@@ -125,7 +125,7 @@ export default class LoopstationAPI {
     if(!looper)
       throw new Error('You tried to stop a track of an inexistent lane!');
 
-    looper.stop(id):
+    looper.stop(id);
 
   }
 
@@ -139,24 +139,21 @@ export default class LoopstationAPI {
     this.tracks = this.tracks.filter(t => t.laneId !== id);
   }
 
+  enableEffect({ chnlId, effectName }) {
+    const chnlToEdit = this.getChnlById(chnlId);
+    this.getEffectByName(chnlToEdit, effectName).enable();
+  }
+
+  disableEffect({ chnlId, effectName }) {
+    const chnlToEdit = this.getChnlById(chnlId);
+    this.getEffectByName(chnlToEdit, effectName).disable();
+  }
+
   setEffectValue({ chnlId, effectName, valueType, value }) {
 
-    let chnlToEdit;
+    const chnlToEdit = this.getChnlById(chnlId);
 
-    if(chnlId === this.masterChnlId)
-      chnlToEdit = this.soundcycle.master;
-    else if(chnlId === this.recorderChnlId)
-      chnlToEdit = this.soundcycle.recorder;
-    else
-      chnlToEdit = this.tracks.filter(t => t.id === chnlId);
-
-    if(!chnlToEdit)
-      throw new Error('You tried to edit an inexistent track!');
-
-    if(!chnlToEdit[effectName])
-      throw new Error('You tried to edit an inexistent effect!');
-
-    chnlToEdit[effectName].setValue(valueType, value);
+    this.getEffectByName(chnlToEdit, effectName).setValue(valueType, value);
 
   }
 
@@ -169,16 +166,39 @@ export default class LoopstationAPI {
   }
 
   /* INTERIOR FUNCTIONALITIES */
+
+  getChnlById(id) {
+
+    if(id === this.masterChnlId)
+      return this.soundcycle.master;
+    else if(id === this.recorderChnlId)
+      return this.soundcycle.recorder;
+    else {
+      let chnl = this.tracks.filter(t => t.id === id)[0];
+      if(chnl)
+        return chnl.audioChnl;
+    }
+
+    throw new Error('You tried to access an inexistent track!');
+  }
+
+  getEffectByName(chnl, effectName) {
+    if(chnl.effects[effectName])
+      return chnl.effects[effectName];
+
+    throw new Error('You tried to access an inexistent effect!');
+  }
+
   onTrackPlay(id) {
     const track = this.tracks.filter(t => t.id === id)[0];
     if(track)
-      track.start();
+      track.audioChnl.start();
   }
 
   onTrackStop(id) {
     const track = this.tracks.filter(t => t.id === id)[0];
     if(track)
-      track.stop();
+      track.audioChnl.stop();
   }
 
   addTrack(audioChnl, id, laneId = null) {

@@ -1,0 +1,14 @@
+@import "../variables.css";
+
+.text-input input {
+  background: var(--secondary-color);
+  color: #FFF;
+  border: none;
+  text-align: center;
+  border-radius: 5px;
+  min-height: 30px;
+}
+
+.text-input input::placeholder {
+  font-style: italic;
+}
