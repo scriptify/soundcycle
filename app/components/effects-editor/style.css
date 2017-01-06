@@ -14,9 +14,9 @@
     flex-wrap: wrap;
     justify-content: center;
 
-    & > div.effect {
-      margin-right: 5px;
+    & > div.effect  {
       margin-top: 10px;
+      box-shadow: 0px 0px 10px #000;
     }
 
   }

@@ -1,9 +1,8 @@
 @import "../variables.css";
 
-input[type=range].range-slider.vertical {
-  transform: rotate(270deg);
-  width: 55px;
-  margin-top: 21.5px;
+.slider-container p {
+  position: relative;
+  top: 15px;
 }
 
 input[type=range].range-slider {

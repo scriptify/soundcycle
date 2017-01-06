@@ -1,15 +1,19 @@
 import Inferno from 'inferno';
 import Component from 'inferno-component'
-import { connect } from 'inferno-mobx'
+
+import uiStore from '../../stores/uiStore';
 
 import './style.css';
 
-@connect(['uiStore'])
-export default class App extends Component {
+import AudioChnl from '../audio-chnl';
 
-  render({ uiStore }) {
+export default class SingleSeqPanel extends Component {
+
+  render(props) {
     return (
-      <div>Position: { uiStore.position }</div>
+      <div className="singleseq-panel">
+        <AudioChnl />
+      </div>
     );
   }
 

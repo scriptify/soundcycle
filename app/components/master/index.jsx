@@ -11,7 +11,7 @@ const Master = props => {
   return (
     <div className="master">
       <EditEffects />
-      <Effect name="Gain" />
+      <Effect name="Gain" defaultValue={ 0.3 } min={ 0 } max={ 1 } step={ 0.01 } />
       <RecordBtn />
       <TextInput placeholder="Enter filename..."/>
     </div>

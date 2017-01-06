@@ -1,15 +1,42 @@
 import Inferno from 'inferno';
 import Component from 'inferno-component'
-import { connect } from 'inferno-mobx'
+
+import uiStore from '../../stores/uiStore';
 
 import './style.css';
 
-@connect(['uiStore'])
-export default class App extends Component {
+import AudioChnl from '../audio-chnl';
 
-  render({ uiStore }) {
+export default class LanesPanel extends Component {
+
+  render(props) {
     return (
-      <div>Position: { uiStore.position }</div>
+      <div className="lanes-panel">
+        <div className="lane">
+          <p className="name">Lane 1</p>
+          <AudioChnl paused/>
+          <AudioChnl />
+          <AudioChnl />
+          <AudioChnl />
+          <AudioChnl />
+          <AudioChnl paused/>
+          <AudioChnl />
+          <AudioChnl />
+          <AudioChnl />
+          <AudioChnl />
+          <AudioChnl paused/>
+          <AudioChnl />
+          <AudioChnl />
+          <AudioChnl />
+          <AudioChnl />
+          <AudioChnl paused/>
+          <AudioChnl />
+          <AudioChnl />
+          <AudioChnl />
+          <AudioChnl />
+        </div>
+
+      </div>
     );
   }
 

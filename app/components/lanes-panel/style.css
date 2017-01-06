@@ -1,0 +1,14 @@
+@import "../variables.css";
+
+.lanes-panel {
+  padding: 10px;
+  text-align: center;
+
+  & .lane {
+    & .name {
+      border-bottom: solid 3px var(--tertiary-color);
+      text-align: left;
+    }
+  }
+
+}

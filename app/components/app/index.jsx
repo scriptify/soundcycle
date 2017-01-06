@@ -1,6 +1,7 @@
 import Inferno from 'inferno';
 import Component from 'inferno-component'
-import { connect } from 'inferno-mobx'
+
+import uiStore from '../../stores/uiStore';
 
 import './style.css';
 
@@ -9,16 +10,18 @@ import Recorder from '../recorder';
 import Master from '../master';
 
 import EffectsEditor from '../effects-editor';
+import LanesPanel from '../lanes-panel';
+import SingleSeqPanel from '../singleseq-panel';
 
-@connect(['uiStore'])
+
 export default class App extends Component {
 
-  render({ uiStore }) {
+  render(props) {
 
     return (
       <div>
         <div className="app-content">
-          <EffectsEditor />
+          <SingleSeqPanel />
         </div>
 
         <div className="top-container">
