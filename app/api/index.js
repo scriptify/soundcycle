@@ -92,7 +92,7 @@ export default class LoopstationAPI {
           throw new Error('No lane was selected!');
 
         const { audioChnl: newLaneChnl, chnlId: newLaneChnlId } = await this.soundcycle.recorder.stopRecording(this.currentMode, {
-          pLooper: looper.looper,
+          looper: looper.looper,
           laneId: this.currentLane
         });
 
@@ -234,8 +234,10 @@ export default class LoopstationAPI {
 
   onTrackPlay(id) {
     const track = this.tracks.filter(t => t.id === id)[0];
-    if(track)
+    if(track) {
+      track.audioChnl.seek(0);
       track.audioChnl.start();
+    }
   }
 
   onTrackStop(id) {
