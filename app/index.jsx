@@ -1,9 +1,13 @@
 import Inferno from 'inferno';
+import { Provider } from 'inferno-mobx';
 
 import App from './components/app';
-import Slider from './components/slider';
+
 import uiStore from './stores/uiStore';
+import dataStore from './stores/dataStore';
 
 Inferno.render(
-  <App />,
+  <Provider uiStore={ uiStore } dataStore={ dataStore }>
+    <App />
+  </Provider>,
   document.querySelector('#app'));

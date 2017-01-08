@@ -2,13 +2,37 @@
 
 .lanes-panel {
   padding: 10px;
-  text-align: center;
+
+  & .title {
+    text-align: center;
+    font-size: 16pt;
+  }
 
   & .lane {
-    & .name {
+    margin-bottom: 15px;
+
+    & .lane-bar {
       border-bottom: solid 3px var(--tertiary-color);
-      text-align: left;
+
+      & > p {
+        display: inline-block;
+      }
+
+      & .delete {
+
+        cursor: pointer;
+        float: right;
+        margin-top: -3px;
+
+        & img {
+          height: 20px;
+          width: 20px;
+        }
+
+      }
     }
+
+
   }
 
 }

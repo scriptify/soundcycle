@@ -1,8 +1,9 @@
-/* No ES6! */
+
 var path = require('path'),
 webpack = require('webpack'), // Da bundling modules!
 NpmInstallPlugin = require('npm-install-webpack-plugin'), // Install client dependencies automatically!
 merge = require('webpack-merge'), // Merge together configurations!
+cssImport = require('postcss-import'),
 cssnext = require('postcss-cssnext'),
 CONFIG = require('./config/config');
 
@@ -53,7 +54,13 @@ const COMMON_CONFIGURATION = {
     ]
   },
   postcss: function() {
-    return [ cssnext ];
+    return [
+      cssImport({
+        path: PATHS.app,
+        addDependencyTo: webpack
+      }),
+      cssnext
+    ];
   },
   plugins: [
     new webpack.DefinePlugin({

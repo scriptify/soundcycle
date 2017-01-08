@@ -9,38 +9,8 @@
     margin-top: -15px;
   }
 
-  & .turn-off-btn {
-    float: left;
-    cursor: pointer;
-    border-radius: 50%;
-  }
-
-  & .turn-off-btn:hover {
-    box-shadow: 0px 0px 10px black;
-  }
-
-  & .turn-on {
-    width: 100%;
-    height: 100%;
-    background: var(--tertiary-color);
-    text-align: center;
-
-    cursor: pointer;
-
-    & img {
-      height: 30px;
-      width: 30px;
-    }
-
-  }
 
 
-
-}
-
-.turn-on:hover img, .turn-on:active img, .turn-on:focus img{
-  height: 40px;
-  width: 40px;
 }
 
 .effect.border {

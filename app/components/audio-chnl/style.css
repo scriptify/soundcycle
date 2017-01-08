@@ -3,11 +3,12 @@
 .audio-chnl {
 
   border: solid 2px var(--secondary-color);
-  height: 90px;
+  height: 110px;
   width: 100px;
   display: inline-block;
   margin-right: 5px;
   margin-top: 5px;
+  text-align: center;
 
   & .delete {
 
@@ -23,14 +24,14 @@
   }
 
   & .slider-container {
-    margin-top: -5px;
+    margin-top: -15px;
   }
 
   & .status {
     width: 100%;
     height: 40px;
-    margin-left: 23px;
     cursor: pointer;
+    margin-top: 10px;
 
     & img {
       height: 40px;

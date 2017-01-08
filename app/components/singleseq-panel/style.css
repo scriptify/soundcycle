@@ -1,4 +1,10 @@
+@import "../variables.css";
+
 .singleseq-panel {
-  text-align: center;
-  padding: 5px;
+  padding: 10px;
+
+  & .title {
+    text-align: center;
+    font-size: 16pt;
+  }
 }

@@ -9,6 +9,7 @@ export default class LoopstationAPI {
   loopers = [];
   currentLane = '';
   currentMode;
+  projectName;
 
   masterChnlId = 'MASTER_ID';
   recorderChnlId = 'RECORDER_ID';
@@ -20,8 +21,25 @@ export default class LoopstationAPI {
     this.currentMode = this.MODES.NEW_LANE;
   }
 
+  setProjectName(name) {
+    this.projectName = name;
+  }
+
+  getProjectName() {
+    if(!this.projectName) {
+      const date = new Date();
+      return `project-${ date.getDate() }-${ date.getMonth() + 1 }-${ date.getFullYear() }.wav`;
+    }
+
+    return this.projectName + '.wav';
+  }
+
   getModes() {
     return this.MODES;
+  }
+
+  getCurrentMode() {
+    return this.currentMode;
   }
 
   setMode(mode) {
@@ -67,16 +85,18 @@ export default class LoopstationAPI {
         };
 
 
-      case this.MODE.ADD_TO_LANE:
+      case this.MODES.ADD_TO_LANE:
         const looper = this.loopers.filter(l => l.id === this.currentLane)[0];
 
         if(!looper)
           throw new Error('No lane was selected!');
 
         const { audioChnl: newLaneChnl, chnlId: newLaneChnlId } = await this.soundcycle.recorder.stopRecording(this.currentMode, {
-          looper,
+          pLooper: looper.looper,
           laneId: this.currentLane
         });
+
+
 
         this.addTrack(newLaneChnl, newLaneChnlId, this.currentLane);
 
@@ -130,6 +150,18 @@ export default class LoopstationAPI {
   }
 
   removeTrack(id) {
+    const track = this.tracks.filter(t => t.id === id)[0];
+    if(!track)
+      throw new Error('You tried to remove an inexistent track!');
+
+    if(track.laneId) {
+      // Remove from looper
+      const looper = this.loopers.filter(looper => looper.id === track.laneId)[0];
+      if(looper) {
+        looper.remove({ id });
+      }
+    }
+    track.audioChnl.stop();
     this.tracks = this.tracks.filter(t => t.id !== id);
   }
 
@@ -163,6 +195,14 @@ export default class LoopstationAPI {
 
   getRecorderChnlId() {
     return this.recorderChnlId;
+  }
+
+  startProjectRecording() {
+    this.soundcycle.master.startRecording();
+  }
+
+  stopProjectRecording() {
+    this.soundcycle.master.stopRecording( this.getProjectName() );
   }
 
   /* INTERIOR FUNCTIONALITIES */

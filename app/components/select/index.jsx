@@ -1,13 +1,33 @@
 import Inferno from 'inferno';
+import Component from 'inferno-component';
 
 import './style.css';
 
-const Select = props => {
-  return (
-    <select className="select" { ...props }>
-      { ...children }
-    </select>
-  );
-};
+export default class Select extends Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-export default Select;
+  componentDidMount() {
+    this.state = {
+      value: ''
+    };
+  }
+
+  handleChange({ target: { value } }) {
+    this.setState({
+      value
+    });
+    this.props.onSelect(value);
+  }
+
+  render(props) {
+
+    return (
+      <select className="select" value={ this.state.value } onInput={ this.handleChange } { ...props }>
+        { ...this.children }
+      </select>
+    );
+  }
+}

@@ -26,12 +26,12 @@ export default class Slider extends Component {
     this.onChange(value);
   }
 
-  render({ showNum, ...props }) {
+  render({ hideNum, onChange, ...props }) {
 
     return (
       <div className="slider-container">
         {
-          showNum && 
+          !hideNum &&
           <p>{ this.state.value }</p>
         }
         <input

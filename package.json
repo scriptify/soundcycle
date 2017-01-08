@@ -28,6 +28,7 @@
     "image-webpack-loader": "*",
     "npm-install-webpack-plugin": "*",
     "postcss-cssnext": "*",
+    "postcss-import": "^9.0.0",
     "postcss-loader": "*",
     "style-loader": "*",
     "webpack": "*",
@@ -36,8 +37,10 @@
     "worker-loader": "*"
   },
   "dependencies": {
-    "inferno": "^1.0.5",
+    "inferno": "^1.0.7",
     "inferno-component": "^1.0.5",
-    "soundcyclejs": "file:///home/scriptify/DEV/soundcyclejs"
+    "inferno-mobx": "^1.0.7",
+    "soundcyclejs": "file:///home/scriptify/DEV/soundcyclejs",
+    "webaudio-effect-units-collection": "^1.0.1"
   }
 }

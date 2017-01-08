@@ -9,19 +9,21 @@ import DeleteIcon from '../../icons/delete.svg';
 import PlayIcon from '../../icons/play.svg';
 import PauseIcon from '../../icons/pause.svg';
 
-const AudioChnl = ({ paused }) => {
+const AudioChnl = ({ paused, onDelete, onToggleStatus, onEditEffects, children }) => {
   return (
     <div className="audio-chnl">
-      <EditEffects small={ true } />
-      <div className="delete">
+      <EditEffects small={ true } onClick={ onEditEffects } />
+      <div className="delete" onClick={ onDelete }>
         <img src={ DeleteIcon } />
       </div>
-      <div className="status">
+      <div className="status" onClick={ onToggleStatus }>
         {
           paused ? <img src={ PlayIcon } /> : <img src={ PauseIcon } />
         }
       </div>
-      <Slider />
+      {
+        children
+      }
     </div>
   );
 };
