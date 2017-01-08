@@ -9,7 +9,7 @@ import DeleteIcon from '../../icons/delete.svg';
 import PlayIcon from '../../icons/play.svg';
 import PauseIcon from '../../icons/pause.svg';
 
-const AudioChnl = ({ paused, onDelete, onToggleStatus, onEditEffects, children }) => {
+const AudioChnl = ({ paused, onDelete, onToggleStatus, onEditEffects, children, hideToggleBtn }) => {
   return (
     <div className="audio-chnl">
       <EditEffects small={ true } onClick={ onEditEffects } />
@@ -18,7 +18,7 @@ const AudioChnl = ({ paused, onDelete, onToggleStatus, onEditEffects, children }
       </div>
       <div className="status" onClick={ onToggleStatus }>
         {
-          paused ? <img src={ PlayIcon } /> : <img src={ PauseIcon } />
+          !hideToggleBtn && (paused ? <img src={ PlayIcon } /> : <img src={ PauseIcon } />)
         }
       </div>
       {

@@ -93,7 +93,7 @@ class DataStore {
     this.addToLane({ laneId, chnlId });
     // Auto select lane
     this.setCurrentLane(laneId);
-    }
+  }
 
   @action('add chnl to lane') addToLane({ laneId, chnlId }) {
     const lane = this.lanes.filter(lane => lane.id === laneId)[0];
@@ -160,9 +160,9 @@ class DataStore {
 
     if(chnlData.isPlaying) {
       // Track started
-      api.playTrack(chnlId)
+      api.playTrack(chnlId, () => this.togglePlayStatus(chnlId));
     } else {
-      api.stopTrack(chnlId)
+      api.stopTrack(chnlId);
     }
   }
 

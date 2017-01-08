@@ -35,13 +35,20 @@ export default class LanesPanel extends Component {
                   </div>
                 </div>
                 {
-                  chnls.map(chnl => {
+                  chnls.map((chnl, i) => {
                     return (
                       <AudioChnl
                         paused={ !chnl.isPlaying }
-                        onDelete={ () => dataStore.removeTrack(chnl.id) }
+                        onDelete={ () => {
+                          if(i === 0) {
+                            dataStore.removeLane(id);
+                          } else {
+                            dataStore.removeTrack(chnl.id)
+                          }
+                        }}
                         onToggleStatus={ () => dataStore.togglePlayStatus(chnl.id) }
                         onEditEffects={ () => uiStore.gotoEffectEditor(chnl.id) }
+                        hideToggleBtn={ i === 0 }
                       >
                         <Slider min={ min } max={ max } defaultValue={ defaultValue } step={ step } onChange={ value => {
 

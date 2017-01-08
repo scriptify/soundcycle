@@ -25,7 +25,7 @@ export default class SingleSeqPanel extends Component {
                   paused={ !chnl.isPlaying }
                   onDelete={ () => dataStore.removeTrack(chnl.id) }
                   onToggleStatus={ () => dataStore.togglePlayStatus(chnl.id) }
-                  onEditEffects={ () => dataStore.gotoEffectEditor(chnl.id) }
+                  onEditEffects={ () => uiStore.gotoEffectEditor(chnl.id) }
                 >
                   <Slider min={ min } max={ max } defaultValue={ defaultValue } step={ step } onChange={ value => {
                     dataStore.setEffectValue({

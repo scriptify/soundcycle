@@ -107,19 +107,21 @@ export default class LoopstationAPI {
 
   }
 
-  playTrack(id) {
+  playTrack(id, onStop = () => {}) {
     const track = this.tracks.filter(t => t.id === id)[0];
 
     if(!track)
       return;
 
     if(!track.laneId) {
+      if(!track.audioChnl.audioObj.onended)
+        track.audioChnl.audioObj.onended = onStop;
       track.audioChnl.start();
       return;
     }
 
     // Start in looper
-    const looper = this.loopers.filter(l => l.id === track.laneId)[0];
+    const { looper } = this.loopers.filter(l => l.id === track.laneId)[0];
 
     if(!looper)
       throw new Error('You tried to start a track of an inexistent lane!');
@@ -140,7 +142,7 @@ export default class LoopstationAPI {
     }
 
     // Stop in looper
-    const looper = this.loopers.filter(l => l.id === track.laneId)[0];
+    const { looper } = this.loopers.filter(l => l.id === track.laneId)[0];
 
     if(!looper)
       throw new Error('You tried to stop a track of an inexistent lane!');
@@ -156,9 +158,10 @@ export default class LoopstationAPI {
 
     if(track.laneId) {
       // Remove from looper
-      const looper = this.loopers.filter(looper => looper.id === track.laneId)[0];
+      const { looper } = this.loopers.filter(looper => looper.id === track.laneId)[0];
       if(looper) {
-        looper.remove({ id });
+        // Needs to be fixed in AudioLooper module!
+        //looper.removeTrack({ id });
       }
     }
     track.audioChnl.stop();
