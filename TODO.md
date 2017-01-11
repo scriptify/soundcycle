@@ -1,22 +1,21 @@
 # Soundcycle: TODOs
 
 ## Bugs to fix
-- Add dispose functionality to the AudioLooper module --> Then use this functionality when deleting lane
-- Stores: When a lane is deleted, delete all according tracks
 - Delay: remove last valuetype
 - Bitcrusher: remove last valuetype
+- AudioLooper: pauseing song causes exception
 
 ## New Features
 - Auto switch to "ADD_TO_LANE"-mode when a new lane was created!
 - Add good keyboard controls
+- AudioLooper: Songs should be played immediatly when they are added
+- If screen big enough: all 3 panels visible at once!
 
 ## Modules: General
 - Better build step: minified/not-minified version
 - Add linting to every module
 - Add testing to the modules
 - AudioLooper documentation: change function 'remove' to 'removeTrack'
-- AudioLooper: removing track causes thread to throw an exception (can't read currentPercentualTime of undefined) --> Then add real functionality to the api again!
-- AudioLooper: pauseing song causes exception
 
 ## UI TODOs
 - Make ALL Inputs controlled!
@@ -31,4 +30,8 @@
 - Add linting
 
 ## Audio issues
-- horrible noise? --> test on with other mics/speakers!
+- Noise when much UI action (beginning at >= 3 tracks)?
+  --> test with normal audio files(same issue)?
+  --> Alternatively play with other method!
+- Remove noise at the and and beginning of recording + add better audio quality
+  --> Chnl problem!

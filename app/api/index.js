@@ -169,6 +169,12 @@ export default class LoopstationAPI {
   }
 
   removeLane(id) {
+    const looper = this.loopers.filter(l => l.id === id)[0];
+    if(!looper)
+      throw new Error('You tried to delete an inexistent looper-instance.');
+
+    looper.looper.dispose();
+
     this.loopers = this.loopers.filter(l => l.id !== id);
     // Remove all tracks which belong to this lane
     this.tracks = this.tracks.filter(t => t.laneId !== id);
