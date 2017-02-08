@@ -1,27 +1,33 @@
 # Soundcycle: TODOs
 
+## Urgent: Refactoring
+- Migrate to webpack 2
+- Export unminified!
+- Document each!
+
 ## Bugs to fix
 - Delay: remove last valuetype
 - Bitcrusher: remove last valuetype
-- AudioLooper: pauseing song causes exception
+- Phaser: remove last valuetype
 
 ## New Features
+- Fade in + Fade out!
 - Auto switch to "ADD_TO_LANE"-mode when a new lane was created!
 - Add good keyboard controls
 - AudioLooper: Songs should be played immediatly when they are added
 - If screen big enough: all 3 panels visible at once!
+- Add amplitude visualization for all chnls
+- Possiblity to link two chnls --> replicate everything
 
 ## Modules: General
-- Better build step: minified/not-minified version
 - Add linting to every module
-- Add testing to the modules
-- AudioLooper documentation: change function 'remove' to 'removeTrack'
+- Add testing to every module
 
 ## UI TODOs
 - Make ALL Inputs controlled!
+- Add effect type: single
 - Enhance modularization of React-Components
 - Enhance CSS (no duplications!)
-- Add effect type: single
 
 ## App: General
 - Add UI-testing
@@ -30,8 +36,5 @@
 - Add linting
 
 ## Audio issues
-- Noise when much UI action (beginning at >= 3 tracks)?
-  --> test with normal audio files(same issue)?
-  --> Alternatively play with other method!
-- Remove noise at the and and beginning of recording + add better audio quality
+- Remove noise at the and and beginning of recording + add better audio quality (STILL PRESENT?)
   --> Chnl problem!

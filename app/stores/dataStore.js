@@ -1,11 +1,13 @@
 import { observable, action, computed } from 'mobx';
 import { EFFECT_DATA } from 'webaudio-effect-units-collection';
 
-import LoopstationAPI from '../api';
+import SoundCycle from 'soundcyclejs';
 
 import { createStoreableEffects } from './util';
 
-const api = new LoopstationAPI();
+const api = new SoundCycle(() => {
+  console.log('Ready.');
+});
 
 class DataStore {
 

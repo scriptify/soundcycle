@@ -31,16 +31,20 @@
     "postcss-import": "^9.0.0",
     "postcss-loader": "*",
     "style-loader": "*",
-    "webpack": "*",
-    "webpack-dev-server": "*",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.3.0",
     "webpack-merge": "*",
     "worker-loader": "*"
   },
   "dependencies": {
+    "audiobufferchnl": "file:///C:\\Users\\scriptify\\Desktop\\DEV\\AudioBufferChnl",
+    "audiolooper": "file:///C:\\Users\\scriptify\\Desktop\\DEV\\AudioLooper",
     "inferno": "^1.0.7",
     "inferno-component": "^1.0.5",
     "inferno-mobx": "^1.0.7",
-    "soundcyclejs": "file:///home/scriptify/DEV/soundcyclejs",
-    "webaudio-effect-units-collection": "^1.0.1"
+    "recordy": "file:///C:\\Users\\scriptify\\Desktop\\DEv\\Recordy",
+    "soundcyclejs": "file:///C:\\Users\\scriptify\\Desktop\\DEV\\soundcyclejs",
+    "webaudio-effect-units-collection": "^1.0.1",
+    "wmstr": "0.0.4"
   }
 }
