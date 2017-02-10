@@ -4,11 +4,15 @@ webpack = require('webpack'), // Da bundling modules!
 NpmInstallPlugin = require('npm-install-webpack-plugin'), // Install client dependencies automatically!
 merge = require('webpack-merge'), // Merge together configurations!
 cssImport = require('postcss-import'),
-cssnext = require('postcss-cssnext')
+cssnext = require('postcss-cssnext'),
+HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin'),
+HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 const PATHS = {
   app: path.join(__dirname, 'app'),
-  build: path.join(__dirname, 'build')
+  build: path.join(__dirname, 'build'),
+  assets: path.join(__dirname, 'assets'),
 };
 
 const TARGET = process.env.npm_lifecycle_event;
@@ -101,7 +105,12 @@ const COMMON_CONFIGURATION = {
           ]
         }
       }
-    })
+    }),
+    new HtmlWebpackPlugin({
+      excludeAssets: [/\.min\.js$/],
+      template: path.join(PATHS.assets, 'index.html')
+    }),
+    new HtmlWebpackExcludeAssetsPlugin()
   ]
 };
 

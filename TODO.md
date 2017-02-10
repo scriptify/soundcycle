@@ -1,40 +1,32 @@
 # Soundcycle: TODOs
-
-## Urgent: Refactoring
-- Migrate to webpack 2
-- Export unminified!
-- Document each!
-
-## Bugs to fix
-- Delay: remove last valuetype
-- Bitcrusher: remove last valuetype
-- Phaser: remove last valuetype
-
-## New Features
-- Fade in + Fade out!
+- __DONE__ Migrate to webpack 2 + export unminified + new folder structure
+- __DONE__ Update dependencies of all packages which just migrated to webpack 2
+- __DONE__ Soundcycle-app: add webpack-html-plugin
+- Better understanding of the AudioLooper
+- AudioLooper: pausing and playing tracks should be possible
+- Switch to React
+- Refactor components + css (also: Make inputs controlled)
+- Fade in + Fade out, refactor how soundcyclejs uses buffers
+- Tracks should be pitchable
+- New type: Free looping + Add play/pause to AudioBufferChnl + Only use AudioBufferChnl, not AudioChnl
 - Auto switch to "ADD_TO_LANE"-mode when a new lane was created!
-- Add good keyboard controls
-- AudioLooper: Songs should be played immediatly when they are added
-- If screen big enough: all 3 panels visible at once!
+- Better design: Full mobile support, colors, animations
+- Add effect type: single
+- Another interface to add effects: Dropdown list?
+- Views should be split + No slider for switching between views: TABS
 - Add amplitude visualization for all chnls
-- Possiblity to link two chnls --> replicate everything
-
-## Modules: General
+- It should be possible to name tracks
+- Delay, Bitcrusher, Phaser: Last valuetype not working?
+- Possiblity to group two or more chnls
+- Keyboard control
+- Document packages
+- Clarify browser support
+  - Which browsers will be supported?
+  - Add according babel configurations to all packages
 - Add linting to every module
 - Add testing to every module
-
-## UI TODOs
-- Make ALL Inputs controlled!
-- Add effect type: single
-- Enhance modularization of React-Components
-- Enhance CSS (no duplications!)
-
-## App: General
+- Re-publish all packages with new freshness!
+  - maybe make a website for them?
 - Add UI-testing
 - Introduce UI-benchmarks of all kinds --> What can be done better?
 - Make it a PWA (ServiceWorkers etc.)
-- Add linting
-
-## Audio issues
-- Remove noise at the and and beginning of recording + add better audio quality (STILL PRESENT?)
-  --> Chnl problem!

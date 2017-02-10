@@ -25,6 +25,8 @@
     "babel-preset-es2015": "*",
     "css-loader": "*",
     "file-loader": "*",
+    "html-webpack-exclude-assets-plugin": "0.0.3",
+    "html-webpack-plugin": "^2.28.0",
     "image-webpack-loader": "*",
     "npm-install-webpack-plugin": "*",
     "postcss-cssnext": "*",
