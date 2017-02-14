@@ -1,16 +1,18 @@
-import Inferno from 'inferno';
-import Component from 'inferno-component'
-import { connect } from 'inferno-mobx';
+import React, { Component } from 'react';
+import { observer, inject } from 'mobx-react';
 
 import './style.css';
 
 import AudioChnl from '../audio-chnl';
 import Slider from '../slider';
 
-@connect(['uiStore', 'dataStore'])
+@inject('uiStore', 'dataStore')
+@observer
 export default class SingleSeqPanel extends Component {
 
-  render({ dataStore, uiStore }) {
+  render() {
+
+    const { uiStore, dataStore } = this.props;
 
     const { min, max, defaultValue, step } = dataStore.getEffectValueData('gain', 'gain');
 
@@ -22,6 +24,7 @@ export default class SingleSeqPanel extends Component {
             dataStore.singleSeqChnls.map(chnl => {
               return (
                 <AudioChnl
+                  key={ chnl.id }
                   paused={ !chnl.isPlaying }
                   onDelete={ () => dataStore.removeTrack(chnl.id) }
                   onToggleStatus={ () => dataStore.togglePlayStatus(chnl.id) }

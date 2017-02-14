@@ -1,6 +1,5 @@
-import Inferno from 'inferno';
-import Component from 'inferno-component'
-import { connect } from 'inferno-mobx';
+import React, { Component } from 'react';
+import { observer, inject } from 'mobx-react';
 
 import './style.css';
 
@@ -12,11 +11,17 @@ import EffectsEditor from '../effects-editor';
 import LanesPanel from '../lanes-panel';
 import SingleSeqPanel from '../singleseq-panel';
 
-@connect(['uiStore', 'dataStore'])
+@inject('uiStore', 'dataStore')
+@observer
 export default class App extends Component {
 
-  render({ uiStore }) {
+  constructor(props) {
+    super(props);
+  }
 
+  render() {
+
+    const { uiStore } = this.props;
     const { position } = uiStore;
 
     return (
@@ -42,14 +47,30 @@ export default class App extends Component {
 
         <div className="bottom-container">
           <Recorder />
-          <Slider min="0" max="300" step="1" hideNum onChange={ val => {
-            if(val <= 100)
-              uiStore.setPosition(1)
-            else if(val > 100 && val <= 200)
-              uiStore.setPosition(2)
-            else if(val > 200 && val <= 300)
-              uiStore.setPosition(3)
-          }}/>
+
+          <div className="switch-view">
+            <div
+              className={ (position === 1) ? 'tab active' : 'tab' }
+              onClick={ () => uiStore.setPosition(1) }
+            >
+              Single Sequences
+            </div>
+
+            <div
+              className={ (position === 2) ? 'tab active' : 'tab' }
+              onClick={ () => uiStore.setPosition(2) }
+            >
+              Lanes
+            </div>
+
+            <div
+              className={ (position === 3) ? 'tab active' : 'tab' }
+              onClick={ () => uiStore.setPosition(3) }
+            >
+              Effect Editor
+            </div>
+          </div>
+
         </div>
       </div>
     );

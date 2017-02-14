@@ -162,9 +162,9 @@ class DataStore {
 
     if(chnlData.isPlaying) {
       // Track started
-      api.playTrack(chnlId, () => this.togglePlayStatus(chnlId));
+      api.playTrack({ id: chnlId });
     } else {
-      api.stopTrack(chnlId);
+      api.stopTrack({ id: chnlId });
     }
   }
 

@@ -1,6 +1,5 @@
-import Inferno from 'inferno';
-import Component from 'inferno-component';
-import { connect } from 'inferno-mobx';
+import React, { Component } from 'react';
+import { observer, inject } from 'mobx-react';
 
 import EditEffects from '../edit-effects';
 import Effect from '../effect';
@@ -9,14 +8,17 @@ import Select from '../select';
 
 import './style.css';
 
-@connect(['uiStore', 'dataStore'])
+@inject('uiStore', 'dataStore')
+@observer
 export default class Recorder extends Component {
 
   constructor(props) {
     super(props);
   }
 
-  render({ uiStore, dataStore }) {
+  render() {
+
+    const { uiStore, dataStore } = this.props;
 
     const { min, max, defaultValue, step } = dataStore.getEffectValueData('gain', 'gain');
 

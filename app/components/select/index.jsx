@@ -1,18 +1,14 @@
-import Inferno from 'inferno';
-import Component from 'inferno-component';
+import React, { Component } from 'react';
 
 import './style.css';
 
 export default class Select extends Component {
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  componentDidMount() {
     this.state = {
       value: ''
     };
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange({ target: { value } }) {
@@ -22,11 +18,10 @@ export default class Select extends Component {
     this.props.onSelect(value);
   }
 
-  render(props) {
-
+  render() {
     return (
-      <select className="select" value={ this.state.value } onInput={ this.handleChange } { ...props }>
-        { ...this.children }
+      <select className="select" value={ this.state.value } onInput={ this.handleChange } { ...this.props }>
+        { this.props.children }
       </select>
     );
   }

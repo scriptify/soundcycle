@@ -1,5 +1,4 @@
-import Inferno from 'inferno';
-import Component from 'inferno-component';
+import React, { Component } from 'react';
 
 import './style.css';
 
@@ -26,7 +25,9 @@ export default class Slider extends Component {
     this.onChange(value);
   }
 
-  render({ hideNum, onChange, ...props }) {
+  render() {
+
+    const { hideNum, onChange } = this.props;
 
     return (
       <div className="slider-container">
@@ -37,7 +38,7 @@ export default class Slider extends Component {
         <input
           type="range"
           className={ 'range-slider' }
-          { ...props }
+          { ...this.props }
           onInput={ this.onValueChange }
         />
       </div>

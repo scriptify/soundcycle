@@ -1,8 +1,5 @@
-import Inferno from 'inferno';
-import Component from 'inferno-component'
-import { connect } from 'inferno-mobx';
-
-import uiStore from '../../stores/uiStore';
+import React, { Component } from 'react';
+import { observer, inject } from 'mobx-react';
 
 import './style.css';
 
@@ -11,10 +8,13 @@ import Effect from '../effect';
 import OffIcon from '../../icons/off.svg';
 import ActivateIcon from '../../icons/activate.svg';
 
-@connect(['uiStore', 'dataStore'])
+@inject('uiStore', 'dataStore')
+@observer
 export default class EffectsEditor extends Component {
 
-  render({ uiStore, dataStore }) {
+  render() {
+
+    const { uiStore, dataStore } = this.props;
 
     if(!uiStore.effectsEditor.currentChnl)
       return (
@@ -38,7 +38,7 @@ export default class EffectsEditor extends Component {
             if(enabled) {
               // Effect is enabled
               return (
-                <div className="effect-value-group">
+                <div key={ effect.name } className="effect-value-group">
                   <div className="effect-bar">
                     <p>{ name }</p>
                     <div className="turn-off" onClick={() => dataStore.toggleEffect({ chnlId: uiStore.effectsEditor.currentChnl, effectName: name })}>
@@ -47,7 +47,7 @@ export default class EffectsEditor extends Component {
                   </div>
                   {
                     effect.values.map(({ name: valueName, options: { min, max, defaultValue, step } }) => {
-                      return <Effect fullWidth name={ valueName } min={ min } max={ max } step={ step } defaultValue={ defaultValue } border onChange={ value => {
+                      return <Effect key={ valueName } fullWidth name={ valueName } min={ min } max={ max } step={ step } defaultValue={ defaultValue } border onChange={ value => {
                         dataStore.setEffectValue({
                           chnlId: uiStore.effectsEditor.currentChnl,
                           effectName: name,
@@ -62,7 +62,7 @@ export default class EffectsEditor extends Component {
             } else {
               // Effect is disabled
               return (
-                <div className="activate-effect">
+                <div className="activate-effect" key={ effect.name } >
                   <p className="effect-name">{ name }</p>
                   <div className="activate"
                     onClick={() => {

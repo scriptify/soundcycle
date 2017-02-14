@@ -3,30 +3,34 @@
 - __DONE__ Update dependencies of all packages which just migrated to webpack 2
 - __DONE__ Soundcycle-app: add webpack-html-plugin
 - Better understanding of the AudioLooper
-- AudioLooper: pausing and playing tracks should be possible
-- Switch to React
+- __DONE__ AudioLooper: pausing and playing tracks should be possible
+- __DONE__ No slider for switching between views: TABS
+- __DONE__ Switch to React
 - Refactor components + css (also: Make inputs controlled)
-- Fade in + Fade out, refactor how soundcyclejs uses buffers
+- Fade in + Fade out, refactor how soundcyclejs uses buffers + make single sequence perfect!
 - Tracks should be pitchable
 - New type: Free looping + Add play/pause to AudioBufferChnl + Only use AudioBufferChnl, not AudioChnl
 - Auto switch to "ADD_TO_LANE"-mode when a new lane was created!
 - Better design: Full mobile support, colors, animations
 - Add effect type: single
 - Another interface to add effects: Dropdown list?
-- Views should be split + No slider for switching between views: TABS
+- Views should be split
 - Add amplitude visualization for all chnls
 - It should be possible to name tracks
+- Default value of gain: 0.5
 - Delay, Bitcrusher, Phaser: Last valuetype not working?
 - Possiblity to group two or more chnls
 - Keyboard control
+- Add waiting screen --> until user grants mic access + error handling when he doesn't
+- Saveing projects should be possible: Save locally (localStorage) or download as project file
 - Document packages
-- Clarify browser support
+- Clarify browser and device support
   - Which browsers will be supported?
   - Add according babel configurations to all packages
 - Add linting to every module
 - Add testing to every module
 - Re-publish all packages with new freshness!
   - maybe make a website for them?
-- Add UI-testing
+- Add UI-testing + Device testing
 - Introduce UI-benchmarks of all kinds --> What can be done better?
 - Make it a PWA (ServiceWorkers etc.)

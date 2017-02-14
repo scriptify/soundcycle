@@ -1,6 +1,5 @@
-import Inferno from 'inferno';
-import Component from 'inferno-component'
-import { connect } from 'inferno-mobx';
+import React, { Component } from 'react';
+import { observer, inject } from 'mobx-react';
 
 import './style.css';
 
@@ -9,14 +8,17 @@ import AudioChnl from '../audio-chnl';
 
 import DeleteIcon from '../../icons/delete.svg';
 
-@connect(['dataStore', 'uiStore'])
+@inject('uiStore', 'dataStore')
+@observer
 export default class LanesPanel extends Component {
 
   constructor(props) {
     super(props);
   }
 
-  render({ dataStore, uiStore }) {
+  render() {
+
+    const { uiStore, dataStore } = this.props;
 
     const { min, max, defaultValue, step } = dataStore.getEffectValueData('gain', 'gain');
 
@@ -27,7 +29,7 @@ export default class LanesPanel extends Component {
         {
           dataStore.lanes.map(({ name, chnls, id }) => {
             return (
-              <div className="lane">
+              <div className="lane" key={ id }>
                 <div className="lane-bar">
                   <p className="name">{ name }</p>
                   <div className="delete" onClick={() => dataStore.removeLane(id)}>
@@ -38,6 +40,7 @@ export default class LanesPanel extends Component {
                   chnls.map((chnl, i) => {
                     return (
                       <AudioChnl
+                        key={ chnl.id }
                         paused={ !chnl.isPlaying }
                         onDelete={ () => {
                           if(i === 0) {

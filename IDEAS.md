@@ -4,3 +4,10 @@
 - Build a MIDI controller and add proper MIDI support
 - Create a desktop version with the possiblity of latency free audio
 - Beta release: Create a closed beta program with an invitation system
+- Create own effects
+- How to make $$$?
+  - Premium version/accounts
+    - abo system
+    - pay once
+  - Additional components which can be bought?
+    - Effects, digital synths etc.

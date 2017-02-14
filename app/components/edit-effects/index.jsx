@@ -1,4 +1,4 @@
-import Inferno from 'inferno';
+import React from 'react';
 
 import './style.css';
 import settingsIcon from '../../icons/settings.svg';

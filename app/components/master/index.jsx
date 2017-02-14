@@ -1,6 +1,5 @@
-import Inferno from 'inferno';
-import Component from 'inferno-component';
-import { connect } from 'inferno-mobx';
+import React, { Component } from 'react';
+import { observer, inject } from 'mobx-react';
 
 import EditEffects from '../edit-effects';
 import Effect from '../effect';
@@ -9,13 +8,16 @@ import TextInput from '../text-input';
 
 import './style.css';
 
-@connect(['dataStore', 'uiStore'])
+@inject('uiStore', 'dataStore')
+@observer
 export default class Master extends Component {
   constructor(props) {
     super(props);
   }
 
-  render({ dataStore, uiStore }) {
+  render() {
+
+    const { uiStore, dataStore } = this.props;
 
     const { min, max, defaultValue, step } = dataStore.getEffectValueData('gain', 'gain');
 
