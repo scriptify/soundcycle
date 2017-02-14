@@ -39,7 +39,5 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 
-
-
-client/build/*
-!client/build/index.html
+TODO.md
+IDEA.md
