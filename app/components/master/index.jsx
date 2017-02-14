@@ -33,7 +33,7 @@ export default class Master extends Component {
           });
         }}/>
         <RecordBtn recording={ dataStore.master.isRecording } onClick={() => dataStore.toggleProjectRecording()}/>
-        <TextInput placeholder="Enter filename..." onInput={ e => dataStore.setProjectName(e.target.value)}/>
+        <TextInput placeholder="Enter filename..." value={ dataStore.master.filename } onInput={ e => dataStore.setProjectName(e.target.value) }/>
       </div>
     );
   }

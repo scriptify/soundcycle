@@ -2,11 +2,11 @@
 - __DONE__ Migrate to webpack 2 + export unminified + new folder structure
 - __DONE__ Update dependencies of all packages which just migrated to webpack 2
 - __DONE__ Soundcycle-app: add webpack-html-plugin
-- Better understanding of the AudioLooper
 - __DONE__ AudioLooper: pausing and playing tracks should be possible
 - __DONE__ No slider for switching between views: TABS
 - __DONE__ Switch to React
 - Refactor components + css (also: Make inputs controlled)
+- Better understanding of the AudioLooper
 - Fade in + Fade out, refactor how soundcyclejs uses buffers + make single sequence perfect!
 - Tracks should be pitchable
 - New type: Free looping + Add play/pause to AudioBufferChnl + Only use AudioBufferChnl, not AudioChnl
@@ -20,6 +20,7 @@
 - Default value of gain: 0.5
 - Delay, Bitcrusher, Phaser: Last valuetype not working?
 - Possiblity to group two or more chnls
+- Possiblity to correct the first track of a looper until another track is added
 - Keyboard control
 - Add waiting screen --> until user grants mic access + error handling when he doesn't
 - Saveing projects should be possible: Save locally (localStorage) or download as project file
