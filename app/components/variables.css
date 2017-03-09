@@ -1,7 +1,42 @@
+/*
+  ----------------
+  COLORS, SPACING
+  ----------------
+
+  ALSO HAVE A LOOK AT THOSE COLOR PALETTES:
+  http://colorpalettes.net/color-palette-3225/
+  http://colorpalettes.net/color-palette-3230/
+  http://colorpalettes.net/color-palette-3233/
+  http://colorpalettes.net/color-palette-3234/
+
+  MORE: http://colorpalettes.net
+*/
+
 :root {
-  --primary-color: #444444;
-  --secondary-color: #1D628B;
-  --tertiary-color: #4589B0;
-  --red: #E3000E;
-  --dark: #1D2247;
+  --darkest: #4e4432;
+  --darker: #4f5052;
+  --dark: #8da0af;
+  --green: #a2bc55;
+  --orange: #fe6d39;
+  --shadowColor: gray(20);
+
+  --spaceBetween: 5px;
+  --animationDuration: 0.3s;
 }
+
+/*
+  ----------------
+  SELECTORS
+  ----------------
+*/
+@custom-selector :--enter :hover, :focus, :active;
+
+/*
+  ----------------
+  MEDIA QUERIES
+  ----------------
+*/
+@custom-media --mobile (width <= 400px);
+@custom-media --tablet (width > 400px) and (width <= 1200px);
+/* may be useless */
+@custom-media --desktop (width > 1200px);

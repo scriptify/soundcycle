@@ -1,0 +1,87 @@
+@import "../variables.css";
+
+:root {
+  --barColor: color( var(--darker) alpha(80%) );
+}
+
+.track {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100px;
+  width: 100px;
+  background: color( var(--orange) alpha(80%) );
+  margin-bottom: 10px;
+  box-shadow: 10px 10px 50px var(--shadowColor);
+  border-radius: 4px;
+  border-bottom-right-radius: 10px;
+  overflow: hidden;
+  transition: box-shadow var(--animationDuration) ease-in, transform var(--animationDuration) ease-in, background var(--animationDuration) ease-in;
+
+  & .title-bar {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 2px;
+    background: var(--barColor);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & .delete-icon {
+      background: color( #FFF alpha(70%) );
+      border-radius: 50%;
+      padding: 1px;
+      transition: transform var(--animationDuration) ease-in;
+      cursor: pointer;
+    }
+
+    & .delete-icon:--enter {
+      transform: rotate(-40deg);
+    }
+
+    & .delete-icon img {
+      height: 18px;
+      width: 18px;
+    }
+
+  }
+
+  & .icon {
+    align-self: center;
+  }
+
+  & .icon img {
+    height: 30px;
+    width: 30px;
+    border: dashed 2px color( #FFF alpha(70%) );
+    border-radius: 50%;
+    transition: border-radius var(--animationDuration) ease-in, border-color var(--animationDuration) ease-in;
+  }
+
+  & .icon img:--enter {
+    border-radius: 10px;
+    border-color: var(--darker);
+  }
+
+  & .slider-container {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background: var(--barColor);
+  }
+}
+
+.track:--enter {
+  box-shadow: 10px 20px 50px var(--shadowColor);
+  transform: rotateX(15deg) rotate(-3deg);
+  background: var(--orange);
+}
+
+.slider-container {
+  & .center {
+    margin: 0 auto;
+  }
+}
+
+.slider {
+
+}

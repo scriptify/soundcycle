@@ -3,6 +3,10 @@ import { observer, inject } from 'mobx-react';
 
 import './style.css';
 
+import MainPane from '../main-pane';
+import MasterPane from '../master-pane';
+import RecorderPane from '../recorder-pane';
+
 @inject('uiStore', 'dataStore')
 @observer
 export default class App extends Component {
@@ -18,7 +22,9 @@ export default class App extends Component {
 
     return (
       <div className={'app-content'}>
-        Hello World!
+        <MasterPane />
+        <MainPane />
+        <RecorderPane />
       </div>
     );
   }

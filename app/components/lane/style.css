@@ -1,0 +1,25 @@
+@import "../variables.css";
+
+:root {
+  --borderStyle: dashed 2px var(--orange);
+}
+
+.lane-container {
+
+  & .lane-title {
+    font-size: 23pt;
+    text-align: center;
+    border: var(--borderStyle);
+    padding: 2px;
+
+    & .content {
+      padding-top: var(--spaceBetween);
+      padding-bottom: var(--spaceBetween);
+      background: color( var(--orange) alpha(30%) );
+    }
+  }
+
+  & .lane-masonry {
+    margin: calc(var(--spaceBetween) * 2) auto;
+  }
+}

@@ -10,41 +10,8 @@ body {
   padding: 0;
 }
 
-.bottom-container {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: var(--primary-color);
-  text-align: center;
-
-  & .tab {
-    background-color: var(--secondary-color);
-    display: inline-block;
-    width: 33%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    cursor: pointer;
-    max-height: 40px;
-  }
-
-  & .tab.active {
-    background-color: var(--tertiary-color);
-  }
-
-}
-
-.top-container {
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-
 .app-content {
-  position: fixed;
-  top: 60px;
-  background: var(--primary-color);
-  height: calc(100% - 162px);
-  width: 100%;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }

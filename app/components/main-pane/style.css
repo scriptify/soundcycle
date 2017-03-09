@@ -1,0 +1,11 @@
+@import "../variables.css";
+
+.main-pane {
+  order: 2;
+  /*flex-grow: 3.7;*/
+  background: var(--darkest);
+  height: 100%; /* Take all available space */
+  padding: 5px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}

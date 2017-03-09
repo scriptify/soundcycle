@@ -1,0 +1,5 @@
+@import "../variables.css";
+
+.master-pane {
+  order: 1;
+}

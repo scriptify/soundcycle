@@ -12,7 +12,7 @@ HtmlWebpackPlugin = require('html-webpack-plugin');
 const PATHS = {
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build'),
-  assets: path.join(__dirname, 'assets'),
+  assets: path.join(__dirname, 'assets')
 };
 
 const TARGET = process.env.npm_lifecycle_event;
@@ -32,7 +32,7 @@ const COMMON_CONFIGURATION = {
     rules: [
       {
         test: /\.css$/,
-        include: PATHS.app,
+        include: [ PATHS.app ],
         use: [
           {
             loader: 'style-loader'

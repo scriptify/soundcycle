@@ -1,0 +1,8 @@
+@import "../variables.css";
+
+.pane {
+  background: var(--darker);
+  max-height: 70px;
+  min-height: 60px;
+  height: 13%;
+}
