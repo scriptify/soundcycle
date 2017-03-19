@@ -4,20 +4,19 @@ import './style.css';
 
 import Masonry from 'react-masonry-component';
 import Track from '../track';
+import Title from '../title';
+
+import deleteIcon from '../../icons/delete.svg';
 
 const Lane = props => {
   return (
     <div className={'lane-container'}>
-      <div className={'lane-title'}>
-        <div className={'content'}>
-          Lane 1
-        </div>
-      </div>
+      <Title name={'Lane 1'} icon={ deleteIcon } />
 
       <div className={'lane-tracks'}>
         <Masonry options={{ gutter: 20, fitWidth: true }} className={'lane-masonry'}>
-          <Track />
-          <Track />
+          <Track hideDelete={ true } />
+          <Track editMode={ true }/>
           <Track />
           <Track />
           <Track />

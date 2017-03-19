@@ -1,0 +1,29 @@
+@import "../variables.css";
+
+.record-btn {
+  height: 43px;
+  width: 43px;
+  background: var(--orange);
+  box-shadow: 0px 0px 10px var(--shadowColor);
+  border-radius: 50%;
+
+  transition:
+    background var(--animationDuration) ease-in,
+    border-radius var(--animationDuration) ease-in;
+
+
+}
+
+.record-btn.recording {
+  background: var(--green);
+  border-radius: 10px;
+  animation: recordingAnimation 1s infinite alternate ease-in;
+}
+
+@keyframes recordingAnimation {
+  from {
+    box-shadow: 0px 0px 10px var(--shadowColor);
+  } to {
+    box-shadow: 0px 10px 30px var(--shadowColor);
+  }
+}

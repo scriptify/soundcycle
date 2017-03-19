@@ -1,0 +1,22 @@
+@import "../variables.css";
+
+.navigate-btn {
+
+  border: solid 1px color( var(--orange) blackness(30%) );
+  border-radius: 50%;
+  cursor: pointer;
+
+  transition:
+    box-shadow var(--animationDuration) ease-in,
+    background var(--animationDuration) ease-in;
+
+  & img {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+.navigate-btn:--enter {
+  box-shadow: -3px 0px 10px var(--shadowColor);
+  background: var(--orange);
+}

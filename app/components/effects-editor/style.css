@@ -1,0 +1,44 @@
+@import "../variables.css";
+
+.effects-editor {
+  height: 50%;
+  overflow-y: auto;
+
+  & .effects-activator {
+
+    display: flex;
+
+    & .effect-toggle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-width: 100px;
+      background: var(--darker);
+      border-radius: 20px;
+      padding: 5px;
+
+      & .toggle {
+        background: var(--green);
+        border-radius: 50%;
+        transition:
+          box-shadow var(--animationDuration) ease-in;
+
+        & img {
+          height: 20px;
+          width: 20px;
+        }
+      }
+
+      & .toggle.disable {
+        background: var(--red);
+      }
+
+      & .toggle:--enter {
+        box-shadow: inset 1px 1px 1px var(--shadowColor);
+      }
+
+    }
+
+  }
+
+}

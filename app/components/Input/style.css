@@ -1,0 +1,27 @@
+@import "../variables.css";
+
+.input-component {
+  & input {
+    background: var(--darkest);
+    color: #FFF;
+    border: none;
+    text-align: center;
+    border-radius: 4px;
+  }
+
+  & input:--enter {
+    animation:
+      focusAnimation 1s infinite alternate ease-in;
+    outline: none;
+  }
+}
+
+@keyframes focusAnimation {
+  from {
+    background: var(--darkest);
+    box-shadow: none;
+  } to {
+    background: color( var(--orange) alpha(60%) );
+    box-shadow: 0px 2px 5px var(--shadowColor);
+  }
+}

@@ -8,26 +8,30 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100px;
-  width: 100px;
+  height: 120px;
+  width: 120px;
   background: color( var(--orange) alpha(80%) );
   margin-bottom: 10px;
   box-shadow: 10px 10px 50px var(--shadowColor);
   border-radius: 4px;
   border-bottom-right-radius: 10px;
   overflow: hidden;
-  transition: box-shadow var(--animationDuration) ease-in, transform var(--animationDuration) ease-in, background var(--animationDuration) ease-in;
+  transition:
+    box-shadow var(--animationDuration) ease-in,
+    transform var(--animationDuration) ease-in,
+    background var(--animationDuration) ease-in;
 
   & .title-bar {
     padding-top: 3px;
     padding-bottom: 3px;
     padding-left: 2px;
     background: var(--barColor);
+
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    & .delete-icon {
+    & .bar-icon {
       background: color( #FFF alpha(70%) );
       border-radius: 50%;
       padding: 1px;
@@ -35,19 +39,26 @@
       cursor: pointer;
     }
 
-    & .delete-icon:--enter {
+    & .bar-icon:--enter {
       transform: rotate(-40deg);
     }
 
-    & .delete-icon img {
+    & .bar-icon img {
       height: 18px;
       width: 18px;
+    }
+
+    & .name {
+      & input {
+        max-width: 80px;
+      }
     }
 
   }
 
   & .icon {
     align-self: center;
+    cursor: pointer;
   }
 
   & .icon img {
@@ -64,15 +75,14 @@
   }
 
   & .slider-container {
-    padding-top: 3px;
-    padding-bottom: 3px;
+    padding: 3px;
     background: var(--barColor);
   }
 }
 
 .track:--enter {
   box-shadow: 10px 20px 50px var(--shadowColor);
-  transform: rotateX(15deg) rotate(-3deg);
+  transform: rotateX(5deg) rotate(1deg);
   background: var(--orange);
 }
 
@@ -80,8 +90,4 @@
   & .center {
     margin: 0 auto;
   }
-}
-
-.slider {
-
 }

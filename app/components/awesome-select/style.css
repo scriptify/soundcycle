@@ -1,0 +1,30 @@
+@import "../variables.css";
+
+.awesome-select {
+
+  display: flex;
+  justify-content: space-between;
+  max-width: 60px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-height: 50px;
+  overflow-y: auto;
+
+  & .option {
+    border: solid 1px var(--orange);
+    border-radius: 50%;
+    font-size: 11pt;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+
+    transition:
+      background var(--animationDuration) ease-in;
+  }
+
+  & .option:--enter {
+    background: var(--orange);
+  }
+
+}

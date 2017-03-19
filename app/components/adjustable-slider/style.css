@@ -1,0 +1,33 @@
+@import "../variables.css";
+
+.adjustable-slider {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & .adjust-btn {
+    flex-grow: 0.1;
+
+    height: 10px;
+    width: 10px;
+    background: var(--darkest);
+    border-radius: 50%;
+    font-size: 7pt;
+    cursor: pointer;
+    transition: box-shadow var(--animationDuration) ease-in;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  & .adjust-btn:--enter {
+    box-shadow: 0px 0px 5px var(--shadowColor);
+  }
+
+  & .inner-slider {
+    flex-grow: 1;
+    padding-left: 5px;
+    padding-right: 3px;
+  }
+}

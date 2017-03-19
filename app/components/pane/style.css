@@ -1,8 +1,12 @@
 @import "../variables.css";
 
 .pane {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
   background: var(--darker);
-  max-height: 70px;
-  min-height: 60px;
+  max-height: 80px;
+  min-height: 70px;
   height: 13%;
 }

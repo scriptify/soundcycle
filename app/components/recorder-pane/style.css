@@ -2,4 +2,9 @@
 
 .recorder-pane {
   order: 3;
+
+  & .effect-container {
+    min-width: 100px;
+  }
+
 }

@@ -2,25 +2,58 @@ import React from 'react';
 
 import './style.css';
 
-import Slider from '../slider';
-import deleteIcon from '../../icons/delete.svg';
-import playIcon from '../../icons/play.svg';
+import AdjustableSlider from '../adjustable-slider';
+import Input from '../input';
 
-const Track = props => {
+import deleteIcon from '../../icons/delete.svg';
+import effectsIcon from '../../icons/effects.png';
+import playIcon from '../../icons/play.svg';
+import okIcon from '../../icons/ok.svg';
+
+const Track = ({ hideDelete = false, editMode = false, name = 'Track', ...restProps }) => {
+  let nameComponent = name;
+
+  if(editMode)
+    nameComponent = <Input type={'text'} />;
+
   return (
     <div className={'track'}>
+
       <div className={'title-bar'}>
-        <div className={'name'}>Track 1</div>
-        <div className={'delete-icon'}>
-          <img src={ deleteIcon } />
+
+        <div className={'name'}>
+          { nameComponent }
         </div>
+
+        {
+          !editMode &&
+            <div className={'bar-icon'}>
+              <img src={ effectsIcon } />
+            </div>
+        }
+
+        {
+          !editMode && !hideDelete &&
+            <div className={'bar-icon'}>
+              <img src={ deleteIcon } />
+            </div>
+        }
+
+        {
+          editMode &&
+            <div className={'bar-icon'}>
+              <img src={ okIcon } />
+            </div>
+        }
+
       </div>
+
       <div className={'icon'}>
         <img src={ playIcon } />
       </div>
       <div className={'slider-container'}>
         <div className={'center'}>
-          <Slider />
+          <AdjustableSlider />
         </div>
       </div>
     </div>

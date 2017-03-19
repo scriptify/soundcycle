@@ -2,4 +2,22 @@
 
 .master-pane {
   order: 1;
+
+  & .effect-container {
+    min-width: 100px;
+  }
+
+  & .record-btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+
+    & .txt-input {
+      margin-top: 5px;
+      & input {
+        max-width: 80px;
+      }
+    }
+  }
 }

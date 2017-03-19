@@ -1,0 +1,13 @@
+@import "../variables.css";
+
+.effect {
+
+  border-left: solid 1px var(--orange);
+  border-right: solid 1px var(--orange);
+  padding: 5px;
+
+  & .effect-name {
+    text-align: center;
+    border-bottom: solid 1px var(--orange);
+  }
+}

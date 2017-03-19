@@ -2,10 +2,10 @@ import React from 'react';
 
 import './style.css';
 
-const Pane = props => {
+const Pane = ({ children }) => {
   return (
     <div className={'pane'}>
-
+      { children }
     </div>
   );
 };

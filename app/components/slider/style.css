@@ -1,21 +1,7 @@
 @import "../variables.css";
 
-.slider {
-  display: flex;
-  justify-content: space-between;
-
-  & .adjust-btn {
-    height: 15px;
-    width: 15px;
-    flex-grow: 0.1;
-    font-size: 11pt;
+.custom-slider {
+  & .value {
     text-align: center;
-    border-radius: 50%;
-  }
-
-  & .slider-component {
-    flex-grow: 1;
-    margin-left: 5px;
-    margin-right: 5px;
   }
 }
