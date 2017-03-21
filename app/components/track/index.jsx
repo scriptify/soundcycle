@@ -8,13 +8,31 @@ import Input from 'components/input';
 import deleteIcon from 'icons/delete.svg';
 import effectsIcon from 'icons/effects.png';
 import playIcon from 'icons/play.svg';
+import pauseIcon from 'icons/pause.svg';
 import okIcon from 'icons/ok.svg';
 
-const Track = ({ hideDelete = false, editMode = false, name = 'Track', ...restProps }) => {
+const Track = ({
+  hideDelete = false,
+  editMode = false,
+  name = 'Track',
+  isPlaying,
+  onToggleEditMode = () => {},
+  onNameChange = () => {},
+  onEffects = () => {},
+  onDelete = () => {},
+  onTogglePlayStatus = () => {},
+  ...rest
+}) => {
+
   let nameComponent = name;
 
   if(editMode)
-    nameComponent = <Input type={'text'} />;
+    nameComponent = <Input
+                      type={'text'}
+                      value={ name }
+                      onClick={ onToggleEditMode }
+                      onChange={ e => onNameChange(e.target.value) }
+                    />;
 
   return (
     <div className={'track'}>
@@ -27,33 +45,33 @@ const Track = ({ hideDelete = false, editMode = false, name = 'Track', ...restPr
 
         {
           !editMode &&
-            <div className={'bar-icon'}>
+            <div className={'bar-icon'} onClick={ onEffects }>
               <img src={ effectsIcon } />
             </div>
         }
 
         {
           !editMode && !hideDelete &&
-            <div className={'bar-icon'}>
+            <div className={'bar-icon'} onClick={ onDelete }>
               <img src={ deleteIcon } />
             </div>
         }
 
         {
           editMode &&
-            <div className={'bar-icon'}>
+            <div className={'bar-icon'} onClick={ onToggleEditMode }>
               <img src={ okIcon } />
             </div>
         }
 
       </div>
 
-      <div className={'icon'}>
-        <img src={ playIcon } />
+      <div className={'icon'} onClick={ onTogglePlayStatus }>
+        <img src={ isPlaying ? pauseIcon : playIcon } />
       </div>
       <div className={'slider-container'}>
         <div className={'center'}>
-          <AdjustableSlider />
+          <AdjustableSlider {...rest} />
         </div>
       </div>
     </div>

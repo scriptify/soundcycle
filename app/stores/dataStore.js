@@ -116,9 +116,21 @@ class DataStore {
     lane.chnls.push({
       id: chnlId,
       isPlaying: true,
+      name: `Track ${ lane.chnls.length + 1 }`,
+      isEdited: false,
       effects: createStoreableEffects(this.EFFECT_DATA)
     });
     this.setMode(this.MODES.ADD_TO_LANE);
+  }
+
+  @action('toggle edit mode for a chnl name') toggleChnlEditMode({ chnlId }) {
+    const chnl = this.getChnlById(chnlId);
+    chnl.isEdited = !chnl.isEdited;
+  }
+
+  @action('change chnl name') changeChnlName({ chnlId, name }) {
+    const chnl = this.getChnlById(chnlId);
+    chnl.name = name;
   }
 
   @action('add chnl to singleSeqChnls') addToSingleSeqChnls(chnlId) {
@@ -197,8 +209,14 @@ class DataStore {
   }
 
   @action('remove lane') removeLane(laneId) {
+
     this.lanes = this.lanes.filter(lane => lane.id !== laneId);
     api.removeLane(laneId);
+
+    if(this.recorder.currentLane === laneId) {
+      this.recorder.currentLane = (this.lanes.length > 0) ? this.lanes[0] : null;
+      this.setMode(this.MODES.NEW_LANE);
+    }
   }
 
   @action('toggle effect') toggleEffect({ chnlId, effectName }) {

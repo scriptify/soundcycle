@@ -2,10 +2,13 @@ import React from 'react';
 
 import './style.css';
 
-const Input = props => {
+const Input = ({
+  onClick = () => {},
+  ...props
+}) => {
 
   return (
-    <div className={'input-component'}>
+    <div className={'input-component'} onClick={ onClick }>
       <input {...props}/>
     </div>
   );
