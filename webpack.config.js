@@ -127,7 +127,9 @@ switch(TARGET) {
         historyApiFallback: true,
         hot: true,
         inline: true,
-        stats: 'errors-only'
+        stats: 'errors-only',
+        host: '0.0.0.0',
+        https: true
       },
       plugins: [
         new webpack.HotModuleReplacementPlugin()

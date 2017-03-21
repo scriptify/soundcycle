@@ -3,6 +3,7 @@
 body {
   font-family: Ubuntu, Calibri, Roboto, sans;
   color: #FFF;
+  overflow-y: hidden; /* Prevent reload on scroll */
 }
 
 * {
