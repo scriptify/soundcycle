@@ -5,15 +5,19 @@
 - __DONE__ AudioLooper: pausing and playing tracks should be possible
 - __DONE__ No slider for switching between views: TABS
 - __DONE__ Switch to React
-- New Design!
+- __DONE__ New Design!
+- BUG: Close effect editor if according track is deleted!
+- Lerna + update documentation!
 - Ajustable Slider: Shouldn't be able to come over/under maximum/minimum
-- Horizontal lane numbers if possible
-- Add Effect type: single
+- Fade in / Fade out
+- Start using lerna for soundcyclejs
 - webaudio-effect-units-collection:
   - Add 'canDisable' field to metadata
   - gain: defaultValue = 0.5
+- Audio visualization!
+- Add Effect type: single
 - Better understanding of the AudioLooper
-- Fade in + Fade out, refactor how soundcyclejs uses buffers + make single sequence perfect!
+- refactor how soundcyclejs uses buffers + make single sequence perfect!
 - Tracks should be pitchable
 - New type: Free looping + Add play/pause to AudioBufferChnl + Only use AudioBufferChnl, not AudioChnl
 - Auto switch to "ADD_TO_LANE"-mode when a new lane was created!

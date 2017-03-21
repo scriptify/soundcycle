@@ -4,6 +4,7 @@ import { EFFECT_DATA } from 'webaudio-effect-units-collection';
 import SoundCycle from 'soundcyclejs';
 
 import { createStoreableEffects } from './util';
+import uiStore from './uiStore';
 
 const api = new SoundCycle(() => {
   console.log('Ready.');
@@ -207,9 +208,20 @@ class DataStore {
     this.singleSeqChnls = this.singleSeqChnls.filter(chnl => chnl.id !== chnlId);
 
     api.removeTrack(chnlId);
+
+    if(uiStore.effectsEditor.currentChnl === chnlId) {
+      uiStore.hideEffectsEditor();
+    }
   }
 
   @action('remove lane') removeLane(laneId) {
+
+    // If a chnl of this lane is open in the effect editor, close if
+    const lane = this.lanes.find(lane => lane.id === laneId);
+    const chnls = lane.chnls.filter(chnl => chnl.id === uiStore.effectsEditor.currentChnl);
+
+    if(chnls.length > 0)
+      uiStore.hideEffectsEditor();
 
     this.lanes = this.lanes.filter(lane => lane.id !== laneId);
     api.removeLane(laneId);

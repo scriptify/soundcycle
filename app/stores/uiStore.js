@@ -37,6 +37,7 @@ class UiStore {
 
   @action('hide effects editor') hideEffectsEditor() {
     this.removeVisiblePane('effects-editor');
+    this.effectsEditor.currentChnl = null;
   }
 
   @action('show exclusive pane') showExclusivePane(name) {
