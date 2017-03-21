@@ -9,5 +9,7 @@
   & .effect-name {
     text-align: center;
     border-bottom: solid 1px var(--orange);
+    padding-bottom: 3px;
+    font-size: 15pt;
   }
 }

@@ -1,17 +1,23 @@
 @import "../variables.css";
 
 .effects-editor {
-  height: 50%;
   overflow-y: auto;
 
   & .effects-activator {
 
     display: flex;
+    flex-wrap: wrap;
+    padding: 3px;
+    padding-bottom: 6px;
+    border: dashed 2px var(--orange);
+    border-top: none;
 
     & .effect-toggle {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-right: 3px;
+      margin-top: 3px;
       min-width: 100px;
       background: var(--darker);
       border-radius: 20px;
@@ -21,7 +27,7 @@
         background: var(--green);
         border-radius: 50%;
         transition:
-          box-shadow var(--animationDuration) ease-in;
+          box-shadow 0.2s ease-in;
 
         & img {
           height: 20px;
@@ -34,11 +40,41 @@
       }
 
       & .toggle:--enter {
-        box-shadow: inset 1px 1px 1px var(--shadowColor);
+        box-shadow: inset 0px 0px 3px var(--shadowColor);
       }
 
     }
 
   }
 
+  & .effects-container {
+    display: flex;
+    flex-wrap: wrap;
+
+    & .effect-container {
+      background: color( var(--darkest) blackness(65%) );
+      width: 100%;
+      max-width: 400px;
+      margin-top: 5px;
+      box-shadow: 0px 0px 10px var(--shadowColor);
+      transition:
+        box-shadow var(--animationDuration) ease-in;
+    }
+
+    & .effect-container:--enter {
+      box-shadow: 0px 5px 10px var(--shadowColor);
+    }
+
+  }
+
+}
+
+.effects-editor.hidden {
+  height: 0;
+}
+
+@media (width >= 400px) {
+  .effects-container {
+    justify-content: center;
+  }
 }

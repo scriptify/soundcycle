@@ -3,14 +3,20 @@ import React from 'react';
 import './style.css';
 
 import Title from '../title';
+import Effect from '../effect';
 
 import okIcon from '../../icons/ok.svg';
 import disableIcon from '../../icons/disable.svg';
 
-const EffectsEditor = props => {
+const EffectsEditor = ({ hidden }) => {
+
+  let className = 'effects-editor';
+
+  if(hidden)
+    className += ' hidden';
 
   return (
-    <div className={'effects-editor'}>
+    <div className={ className }>
 
       <Title name={'Effects Editor'} icon={ disableIcon }/>
 
@@ -34,6 +40,21 @@ const EffectsEditor = props => {
           </div>
         </div>
 
+      </div>
+
+      <div className={'effects-container'}>
+        <div className={'effect-container'}>
+          <Effect name={'Lowpass'}/>
+        </div>
+        <div className={'effect-container'}>
+          <Effect name={'Lowpass'}/>
+        </div>
+        <div className={'effect-container'}>
+          <Effect name={'Lowpass'}/>
+        </div>
+        <div className={'effect-container'}>
+          <Effect name={'Lowpass'}/>
+        </div>
       </div>
 
     </div>
