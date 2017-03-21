@@ -45,3 +45,22 @@
     }
   }
 }
+
+.title.small {
+
+  border-color: var(--green);
+  max-width: 400px;
+  margin: 0 auto;
+
+  & .content {
+    background: color( var(--green) alpha(30%) );
+
+    & .text {
+      font-size: 16pt;
+    }
+
+    & .icon:--enter {
+      border-color: var(--red);
+    }
+  }
+}

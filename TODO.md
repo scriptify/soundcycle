@@ -5,7 +5,13 @@
 - __DONE__ AudioLooper: pausing and playing tracks should be possible
 - __DONE__ No slider for switching between views: TABS
 - __DONE__ Switch to React
-- Refactor components + css (also: Make inputs controlled)
+- New Design!
+- Ajustable Slider: Shouldn't be able to come over/under maximum/minimum
+- Horizontal lane numbers if possible
+- Add Effect type: single
+- webaudio-effect-units-collection:
+  - Add 'canDisable' field to metadata
+  - gain: defaultValue = 0.5
 - Better understanding of the AudioLooper
 - Fade in + Fade out, refactor how soundcyclejs uses buffers + make single sequence perfect!
 - Tracks should be pitchable

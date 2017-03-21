@@ -21,9 +21,22 @@ class UiStore {
       this.visiblePanes.push(name);
   }
 
+  @action('remove pane') removeVisiblePane(name) {
+    if(!this.visiblePanes.includes(name))
+      throw new Error(`Can't remove an invisible Pane!`);
+
+    this.visiblePanes = this.visiblePanes.filter(pane => pane !== name);
+  }
+
   @action('show effects editor') showEffectsEditor(chnlId) {
     this.setEffectsEditorChnl(chnlId);
     this.addVisiblePane('effects-editor');
+    // This is very dirty, because if e.g. the classname changes, this code doesn't work anymore
+    document.querySelector('.main-pane').scrollTop = 0;
+  }
+
+  @action('hide effects editor') hideEffectsEditor() {
+    this.removeVisiblePane('effects-editor');
   }
 
   @action('show exclusive pane') showExclusivePane(name) {

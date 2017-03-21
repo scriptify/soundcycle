@@ -73,6 +73,9 @@ const MasterPane = ({
 
         <NavigateBtn
           image={ effectsImg }
+          onClick={ () => {
+            uiStore.showEffectsEditor( dataStore.master.id );
+          }}
         />
 
       </Pane>

@@ -12,6 +12,7 @@
     padding-bottom: 6px;
     border: dashed 2px var(--orange);
     border-top: none;
+    margin-bottom: 10px;
 
     & .effect-toggle {
       display: flex;
@@ -19,12 +20,13 @@
       align-items: center;
       margin-right: 3px;
       margin-top: 3px;
-      min-width: 100px;
+      min-width: 120px;
       background: var(--darker);
       border-radius: 20px;
       padding: 5px;
 
       & .toggle {
+        cursor: pointer;
         background: var(--green);
         border-radius: 50%;
         transition:
@@ -51,11 +53,12 @@
   & .effects-container {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 10px;
 
     & .effect-container {
       background: color( var(--darkest) blackness(65%) );
       width: 100%;
-      max-width: 400px;
+      max-width: 200px;
       margin-top: 5px;
       box-shadow: 0px 0px 10px var(--shadowColor);
       transition:
@@ -77,5 +80,8 @@
 @media (width >= 400px) {
   .effects-container {
     justify-content: center;
+    & .effect-container {
+      margin-right: 5px;
+    }
   }
 }
