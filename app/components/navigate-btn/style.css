@@ -7,7 +7,7 @@
   cursor: pointer;
 
   transition:
-    box-shadow var(--animationDuration) ease-in,
+    transform var(--animationDuration) ease-in,
     background var(--animationDuration) ease-in;
 
   & img {
@@ -17,6 +17,6 @@
 }
 
 .navigate-btn:--enter {
-  box-shadow: -3px 0px 10px var(--shadowColor);
   background: var(--orange);
+  transform: rotate(-30deg);
 }
