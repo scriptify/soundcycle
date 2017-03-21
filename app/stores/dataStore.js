@@ -12,6 +12,7 @@ const api = new SoundCycle(() => {
 class DataStore {
 
   EFFECT_DATA = EFFECT_DATA;
+  MAX_CHNL_NAME_LENGTH = 8;
   MODES = api.getModes();
 
   getEffectValueData(effectName, valueName) {
@@ -130,7 +131,7 @@ class DataStore {
 
   @action('change chnl name') changeChnlName({ chnlId, name }) {
     const chnl = this.getChnlById(chnlId);
-    chnl.name = name;
+    chnl.name = name.substring(0, this.MAX_CHNL_NAME_LENGTH);
   }
 
   @action('add chnl to singleSeqChnls') addToSingleSeqChnls(chnlId) {

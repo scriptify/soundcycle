@@ -30,7 +30,6 @@ const Track = ({
     nameComponent = <Input
                       type={'text'}
                       value={ name }
-                      onClick={ onToggleEditMode }
                       onChange={ e => onNameChange(e.target.value) }
                     />;
 
@@ -39,7 +38,10 @@ const Track = ({
 
       <div className={'title-bar'}>
 
-        <div className={'name'}>
+        <div className={'name'} onClick={ () => {
+          if(!editMode)
+            onToggleEditMode();
+        }}>
           { nameComponent }
         </div>
 

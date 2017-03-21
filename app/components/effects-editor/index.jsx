@@ -40,6 +40,9 @@ const EffectsEditor = ({
         {
           chnl.effects.map(({ name, enabled }) => {
 
+            if(name === 'gain')
+              return;
+
             let className = 'toggle';
             if(enabled)
               className += ' disable';
