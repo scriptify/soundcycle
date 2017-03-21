@@ -2,7 +2,7 @@ import React from 'react';
 
 import './style.css';
 
-import Slider from '../slider';
+import Slider from 'components/slider';
 
 const AdjustableSlider = (props) => {
   return (

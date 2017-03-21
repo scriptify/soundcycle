@@ -3,11 +3,13 @@ import { observer, inject } from 'mobx-react';
 
 import './style.css';
 
-import MainPane from '../main-pane';
-import MasterPane from '../master-pane';
-import RecorderPane from '../recorder-pane';
+import { UI_STORE, DATA_STORE } from 'stores/constants';
 
-@inject('uiStore', 'dataStore')
+import MainPane from 'components/main-pane';
+import MasterPane from 'components/master-pane';
+import RecorderPane from 'components/recorder-pane';
+
+@inject(UI_STORE, DATA_STORE)
 @observer
 export default class App extends Component {
 

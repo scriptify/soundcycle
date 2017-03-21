@@ -2,7 +2,7 @@ import React from 'react';
 
 import './style.css';
 
-import Title from '../Title';
+import Title from '../title';
 
 import closeIcon from '../../icons/disable.svg';
 

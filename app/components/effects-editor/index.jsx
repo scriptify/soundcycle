@@ -2,11 +2,11 @@ import React from 'react';
 
 import './style.css';
 
-import Title from '../title';
-import Effect from '../effect';
+import Title from 'components/title';
+import Effect from 'components/effect';
 
-import okIcon from '../../icons/ok.svg';
-import disableIcon from '../../icons/disable.svg';
+import okIcon from 'icons/ok.svg';
+import disableIcon from 'icons/disable.svg';
 
 const EffectsEditor = ({ hidden }) => {
 

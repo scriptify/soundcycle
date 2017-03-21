@@ -1,17 +1,22 @@
 import React from 'react';
+import { observer, inject } from 'mobx-react';
 
 import './style.css';
 
-import Pane from '../pane';
-import Effect from '../effect';
-import RecordBtn from '../record-btn';
-import Input from '../input';
-import NavigateBtn from '../navigate-btn';
+import { UI_STORE, DATA_STORE } from 'stores/constants';
 
-import effectsImg from '../../icons/effects.png';
-import settingsImg from '../../icons/settings.svg';
+import Pane from 'components/pane';
+import Effect from 'components/effect';
+import RecordBtn from 'components/record-btn';
+import Input from 'components/input';
+import NavigateBtn from 'components/navigate-btn';
 
-const MasterPane = props => {
+import effectsImg from 'icons/effects.png';
+import settingsImg from 'icons/settings.svg';
+
+const MasterPane = ({
+  dataStore
+}) => {
   return (
     <div className={'master-pane'}>
 
@@ -24,7 +29,13 @@ const MasterPane = props => {
         <div className={'record-btn-container'}>
           <RecordBtn isRecording={ false }/>
           <div className={'txt-input'}>
-            <Input type={'text'} />
+            <Input
+              type={'text'}
+              value={ dataStore.master.filename }
+              onChange={ e => {
+                dataStore.setProjectName(e.target.value);
+              }}
+            />
           </div>
         </div>
 
@@ -38,4 +49,4 @@ const MasterPane = props => {
   );
 };
 
-export default MasterPane;
+export default inject(UI_STORE, DATA_STORE)(observer(MasterPane));

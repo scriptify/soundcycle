@@ -2,13 +2,13 @@ import React from 'react';
 
 import './style.css';
 
-import Pane from '../pane';
-import Effect from '../effect';
-import RecordBtn from '../record-btn';
-import NavigateBtn from '../navigate-btn';
-import AwesomeSelect from '../awesome-select';
+import Pane from 'components/pane';
+import Effect from 'components/effect';
+import RecordBtn from 'components/record-btn';
+import NavigateBtn from 'components/navigate-btn';
+import AwesomeSelect from 'components/awesome-select';
 
-import effectsImg from '../../icons/effects.png';
+import effectsImg from 'icons/effects.png';
 
 const RecorderPane = props => {
   return (

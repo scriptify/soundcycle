@@ -2,7 +2,7 @@ import React from 'react';
 
 import './style.css';
 
-import AdjustableSlider from '../adjustable-slider';
+import AdjustableSlider from 'components/adjustable-slider';
 
 const Effect = ({ name }) => {
 

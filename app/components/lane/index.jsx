@@ -3,10 +3,10 @@ import React from 'react';
 import './style.css';
 
 import Masonry from 'react-masonry-component';
-import Track from '../track';
-import Title from '../title';
+import Track from 'components/track';
+import Title from 'components/title';
 
-import deleteIcon from '../../icons/delete.svg';
+import deleteIcon from 'icons/delete.svg';
 
 const Lane = props => {
   return (

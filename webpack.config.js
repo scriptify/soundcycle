@@ -23,6 +23,11 @@ const COMMON_CONFIGURATION = {
   },
   resolve: {
     extensions: ['.js', '.jsx'], // Resolve these extensions
+    alias: {
+      'components': path.resolve(PATHS.app, 'components'),
+      'icons': path.resolve(PATHS.app, 'icons'),
+      'stores': path.resolve(PATHS.app, 'stores')
+    }
   },
   output: {
     path: PATHS.build,

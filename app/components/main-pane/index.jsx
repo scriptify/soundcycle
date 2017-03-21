@@ -2,9 +2,9 @@ import React from 'react';
 
 import './style.css';
 
-import Lanes from '../lanes';
-import EffectsEditor from '../effects-editor';
-import Menu from '../Menu';
+import Lanes from 'components/lanes';
+import EffectsEditor from 'components/effects-editor';
+import Menu from 'components/Menu';
 
 const MainPane = props => {
   return (

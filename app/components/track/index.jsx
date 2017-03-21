@@ -2,13 +2,13 @@ import React from 'react';
 
 import './style.css';
 
-import AdjustableSlider from '../adjustable-slider';
-import Input from '../input';
+import AdjustableSlider from 'components/adjustable-slider';
+import Input from 'components/input';
 
-import deleteIcon from '../../icons/delete.svg';
-import effectsIcon from '../../icons/effects.png';
-import playIcon from '../../icons/play.svg';
-import okIcon from '../../icons/ok.svg';
+import deleteIcon from 'icons/delete.svg';
+import effectsIcon from 'icons/effects.png';
+import playIcon from 'icons/play.svg';
+import okIcon from 'icons/ok.svg';
 
 const Track = ({ hideDelete = false, editMode = false, name = 'Track', ...restProps }) => {
   let nameComponent = name;
