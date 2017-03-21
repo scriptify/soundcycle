@@ -4,14 +4,14 @@ import './style.css';
 
 import Slider from 'components/slider';
 
-const AdjustableSlider = (props) => {
+const AdjustableSlider = ({ onMore = () => {}, onLess = () => {}, ...props }) => {
   return (
     <div className={'adjustable-slider'}>
-      <div className={'adjust-btn'}>-</div>
+      <div className={'adjust-btn'} onClick={ onLess }>-</div>
       <div className={'inner-slider'}>
         <Slider { ...props }/>
       </div>
-      <div className={'adjust-btn'}>+</div>
+      <div className={'adjust-btn'} onClick={ onMore }>+</div>
     </div>
   );
 };

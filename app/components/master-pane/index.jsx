@@ -17,17 +17,41 @@ import settingsImg from 'icons/settings.svg';
 const MasterPane = ({
   dataStore
 }) => {
+
+  const masterGainData = dataStore.getEffectValueData('gain', 'gain');
+  const masterGainValue = dataStore.getEffectValueObject(dataStore.master.effects, 'gain', 'gain').value;
+
   return (
     <div className={'master-pane'}>
 
       <Pane>
 
         <div className={'effect-container'}>
-          <Effect name={'Gain'}/>
+          <Effect
+            name={'Gain'}
+            value={ masterGainValue }
+            min={ masterGainData.min }
+            max={ masterGainData.max }
+            step={ masterGainData.step }
+            onChange={ val => {
+              dataStore.setEffectValue({ chnlId: dataStore.master.id, effectName: 'gain', valueType: 'gain', value: val });
+            }}
+            onMore={ () => {
+              dataStore.setEffectValue({ chnlId: dataStore.master.id, effectName: 'gain', valueType: 'gain', value: masterGainValue + masterGainData.step });
+            }}
+            onLess={ () => {
+              dataStore.setEffectValue({ chnlId: dataStore.master.id, effectName: 'gain', valueType: 'gain', value: masterGainValue - masterGainData.step });
+            }}
+          />
         </div>
 
         <div className={'record-btn-container'}>
-          <RecordBtn isRecording={ false }/>
+          <RecordBtn
+            isRecording={ dataStore.master.isRecording }
+            onClick={ () => {
+              dataStore.toggleProjectRecording();
+            }}
+          />
           <div className={'txt-input'}>
             <Input
               type={'text'}

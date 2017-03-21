@@ -5,7 +5,7 @@ import './style.css';
 import RCSlider from 'rc-slider';
 import 'style-loader!css-loader!rc-slider/assets/index.css';
 
-const Slider = ({ name = '', showValue = false, value, ...propsRest }) => {
+const Slider = ({ name = '', showValue = false, value = 0, ...propsRest }) => {
 
   const props = {
     value,
@@ -16,7 +16,7 @@ const Slider = ({ name = '', showValue = false, value, ...propsRest }) => {
     <div className={'custom-slider'}>
       { showValue &&
         <div className={'value'}>
-          { value }
+          { value.toFixed(2) }
         </div>
       }
       <RCSlider className={'slider-component'} { ...props }/>

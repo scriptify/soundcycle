@@ -52,6 +52,20 @@ class DataStore {
     return chnlData;
   }
 
+  getEffectValueObject(effects, effectName, valueName) {
+    const effect = effects.filter(eff => eff.name === effectName)[0];
+
+    if(!effect)
+      throw new Error(`You tried to access an inexistent effect!`);
+
+    const value = effect.values.filter(val => val.name === valueName)[0];
+
+    if(!value)
+      throw new Error(`You tried to access an inexistent value!`);
+
+    return value;
+  }
+
   @observable recorder = {
     id: api.getRecorderChnlId(),
     isRecording: false,
@@ -208,7 +222,7 @@ class DataStore {
   @action('set effect value') setEffectValue({ chnlId, effectName, valueType, value }) {
     const chnlData = this.getChnlById(chnlId);
     const effect = chnlData.effects.filter(effect => effect.name === effectName)[0];
-    const effectValue = effect.values.filter(val => val.name === valueType);
+    const effectValue = effect.values.filter(val => val.name === valueType)[0];
     effectValue.value = value;
 
     api.setEffectValue({
