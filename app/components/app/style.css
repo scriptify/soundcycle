@@ -4,6 +4,7 @@ body {
   font-family: Ubuntu, Calibri, Roboto, sans;
   color: #FFF;
   overflow-y: hidden; /* Prevent reload on scroll */
+  user-select: none; /* Prevent browser from performing any action when text is selected */
 }
 
 * {
