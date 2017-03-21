@@ -2,10 +2,10 @@ import React from 'react';
 
 import './style.css';
 
-const NavigateBtn = ({ image }) => {
+const NavigateBtn = ({ image, ...props }) => {
 
   return (
-    <div className={'navigate-btn'}>
+    <div className={'navigate-btn'} { ...props }>
       {
         image &&
         <img src={ image } />

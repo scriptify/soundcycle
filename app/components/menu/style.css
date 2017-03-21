@@ -1,1 +1,5 @@
 @import "../variables.css";
+
+.menu {
+  animation: fadeIn var(--animationDuration) ease-in;
+}

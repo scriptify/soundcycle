@@ -1,20 +1,31 @@
 import React from 'react';
+import { observer, inject } from 'mobx-react';
 
 import './style.css';
 
-import Title from '../title';
+import { UI_STORE } from 'stores/constants';
 
-import closeIcon from '../../icons/disable.svg';
+import Title from 'components/title';
 
-const Menu = props => {
+import closeIcon from 'icons/disable.svg';
+
+const Menu = ({
+  uiStore
+}) => {
 
   return (
     <div className={'menu'}>
-      <Title name={'Menu'} icon={ closeIcon }/>
-      <p>Soundcycle ALPHA. Thanks for using!</p>
+      <Title
+        name={'Menu'}
+        icon={ closeIcon }
+        onAction={ () => {
+          uiStore.hideExclusivePane();
+        }}
+      />
+      <p>Thank you for using the ALPHA version of Soundcycle! In the ALPHA there are no menu point available yet.</p>
     </div>
   );
 
 };
 
-export default Menu;
+export default inject(UI_STORE)(observer(Menu));

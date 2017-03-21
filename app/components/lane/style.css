@@ -5,6 +5,7 @@
 }
 
 .lane-container {
+  animation: fadeIn var(--animationDuration) ease-in;
   & .lane-masonry {
     margin: calc(var(--spaceBetween) * 2) auto;
   }

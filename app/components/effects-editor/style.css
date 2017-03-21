@@ -2,6 +2,7 @@
 
 .effects-editor {
   overflow-y: auto;
+  animation: fadeIn var(--animationDuration) ease-in;
 
   & .effects-activator {
 

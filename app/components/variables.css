@@ -41,3 +41,17 @@
 @custom-media --tablet (width > 400px) and (width <= 1200px);
 /* may be useless */
 @custom-media --desktop (width > 1200px);
+
+/*
+  ----------------
+  ANIMATIONS
+  ----------------
+*/
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
+}

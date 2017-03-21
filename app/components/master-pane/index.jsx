@@ -15,7 +15,8 @@ import effectsImg from 'icons/effects.png';
 import settingsImg from 'icons/settings.svg';
 
 const MasterPane = ({
-  dataStore
+  dataStore,
+  uiStore
 }) => {
 
   const masterGainData = dataStore.getEffectValueData('gain', 'gain');
@@ -63,9 +64,16 @@ const MasterPane = ({
           </div>
         </div>
 
-        <NavigateBtn image={ settingsImg }/>
+        <NavigateBtn
+          image={ settingsImg }
+          onClick={ () => {
+            uiStore.showMenu();
+          }}
+        />
 
-        <NavigateBtn image={ effectsImg }/>
+        <NavigateBtn
+          image={ effectsImg }
+        />
 
       </Pane>
 

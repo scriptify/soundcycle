@@ -1,7 +1,8 @@
 import { observable, action } from 'mobx';
 
 class UiStore {
-  @observable position = 2;
+  @observable visiblePanes = ['lanes'];
+  @observable exclusivePane = ''; // If a pane is in there, all the other panes need to hide
 
   @observable effectsEditor = {
     currentChnl: null
@@ -15,9 +16,26 @@ class UiStore {
     this.effectsEditor.currentChnl = chnlId;
   }
 
-  @action('goto effect editor') gotoEffectEditor(chnlId) {
+  @action('add visible pane') addVisiblePane(name) {
+    if(!this.visiblePanes.includes(name))
+      this.visiblePanes.push(name);
+  }
+
+  @action('show effects editor') showEffectsEditor(chnlId) {
     this.setEffectsEditorChnl(chnlId);
-    this.setPosition(3);
+    this.addVisiblePane('effects-editor');
+  }
+
+  @action('show exclusive pane') showExclusivePane(name) {
+    this.exclusivePane = name;
+  }
+
+  @action('hide exclusive pane') hideExclusivePane() {
+    this.exclusivePane = '';
+  }
+
+  @action('display menu') showMenu() {
+    this.showExclusivePane('menu');
   }
 
 }
