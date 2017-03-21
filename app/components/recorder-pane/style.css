@@ -2,9 +2,49 @@
 
 .recorder-pane {
   order: 3;
+  background: var(--darkest);
 
   & .effect-container {
     min-width: 100px;
+  }
+
+  & .mode-select {
+    background: color( var(--darker) blackness(80%));
+    width: 30%;
+    min-width: 70px;
+    max-width: 200px;
+    margin: 0 auto;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: solid 1px var(--orange);
+    border-top: none;
+    box-shadow: 0px -5px 2px var(--darker);
+
+    display: flex;
+    justify-content: center;
+    & .option {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 30px;
+      width: 50%;
+      text-align: center;
+      transition:
+        box-shadow .1s ease-in;
+    }
+
+    & .option.left {
+      border-bottom-left-radius: 10px;
+    }
+
+    & .option.right {
+      border-bottom-right-radius: 10px;
+    }
+
+    & .option.selected {
+      box-shadow: 2px 0px 3px var(--shadowColor);
+    }
   }
 
 }

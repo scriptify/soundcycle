@@ -118,6 +118,7 @@ class DataStore {
       isPlaying: true,
       effects: createStoreableEffects(this.EFFECT_DATA)
     });
+    this.setMode(this.MODES.ADD_TO_LANE);
   }
 
   @action('add chnl to singleSeqChnls') addToSingleSeqChnls(chnlId) {

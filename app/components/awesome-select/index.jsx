@@ -2,16 +2,19 @@ import React from 'react';
 
 import './style.css';
 
-const AwesomeSelect = ({ options }) => {
+const AwesomeSelect = ({ options = [], onSelect = () => {}, selected }) => {
 
   return (
     <div className={'awesome-select'}>
       {
-        options.map(option =>
+        options.map(({ id, value }) =>
           <div
-            className={'option'}
-            key={option}>
-              {option}
+            className={(id === selected) ? 'option selected' : 'option'}
+            onClick={ () => {
+              onSelect({ id, value });
+            }}
+            key={id}>
+              { value }
             </div>
         )
       }
