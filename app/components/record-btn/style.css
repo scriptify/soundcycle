@@ -14,16 +14,16 @@
 }
 
 .record-btn.recording {
-  border: dashed 8px var(--orange);
-  height: 32px;
-  width: 32px;
-  animation: recordingAnimation 1s infinite alternate ease-in;
+  border-radius: 30%;
+  box-shadow: 0px 0px 10px var(--shadowColor);
+  animation:
+    bgAnimation 1s infinite alternate linear;
 }
 
-@keyframes recordingAnimation {
+@keyframes bgAnimation {
   from {
-    transform: rotate(0);
+    background: color( var(--orange) alpha(30%) );
   } to {
-    transform: rotate(360deg);
+    background: color( var(--red) alpha(100%) );
   }
 }
