@@ -39,6 +39,7 @@
 */
 @custom-media --mobile (width <= 400px);
 @custom-media --tablet (width > 400px) and (width <= 1200px);
+@custom-media --big (width >= 600px);
 /* may be useless */
 @custom-media --desktop (width > 1200px);
 

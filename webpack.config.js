@@ -129,7 +129,7 @@ switch(TARGET) {
         inline: true,
         stats: 'errors-only',
         host: '0.0.0.0',
-        https: true
+        https: false
       },
       plugins: [
         new webpack.HotModuleReplacementPlugin()

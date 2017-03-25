@@ -6,17 +6,17 @@
 - __DONE__ No slider for switching between views: TABS
 - __DONE__ Switch to React
 - __DONE__ New Design!
-- BUG: Close effect editor if according track is deleted!
-- Lerna + update documentation!
-- Ajustable Slider: Shouldn't be able to come over/under maximum/minimum
+- __DONE__ BUG: Close effect editor if according track is deleted!
+- __DONE__ Make soundcycle utilities a monorepo -> sountility
+- Update documentation
 - Fade in / Fade out
-- Start using lerna for soundcyclejs
+- Ajustable Slider: Shouldn't be able to come over/under maximum/minimum
 - webaudio-effect-units-collection:
   - Add 'canDisable' field to metadata
   - gain: defaultValue = 0.5
+- Test on my device with remote debugging!
 - Audio visualization!
 - Add Effect type: single
-- Better understanding of the AudioLooper
 - refactor how soundcyclejs uses buffers + make single sequence perfect!
 - Tracks should be pitchable
 - New type: Free looping + Add play/pause to AudioBufferChnl + Only use AudioBufferChnl, not AudioChnl

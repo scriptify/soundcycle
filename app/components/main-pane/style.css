@@ -9,3 +9,10 @@
   overflow-y: scroll;
   overflow-x: hidden;
 }
+
+@media (--big) {
+  .main-pane {
+    display: flex;
+    justify-content: center;
+  }
+}

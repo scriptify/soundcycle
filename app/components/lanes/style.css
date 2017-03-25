@@ -3,3 +3,9 @@
 .lanes-container {
   margin-top: 5px;
 }
+
+@media (--big) {
+  .lanes-container {
+    width: 50%;
+  }
+}

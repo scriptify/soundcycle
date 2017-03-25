@@ -77,7 +77,14 @@
   height: 0;
 }
 
-@media (width >= 400px) {
+@media (--big) {
+  .effects-editor {
+    width: 50%;
+    overflow-y: visible;
+    padding-right: 5px;
+    padding-top: 5px;
+  }
+
   .effects-container {
     justify-content: center;
     & .effect-container {
