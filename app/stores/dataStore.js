@@ -73,14 +73,16 @@ class DataStore {
     isRecording: false,
     currentMode: api.getCurrentMode(),
     currentLane: null,
-    effects: createStoreableEffects(this.EFFECT_DATA)
+    effects: createStoreableEffects(this.EFFECT_DATA),
+    name: 'Recorder'
   };
 
   @observable master = {
     id: api.getMasterChnlId(),
     isRecording: false,
     filename: '',
-    effects: createStoreableEffects(this.EFFECT_DATA)
+    effects: createStoreableEffects(this.EFFECT_DATA),
+    name: 'Master'
   };
 
   @observable singleSeqChnls = [];

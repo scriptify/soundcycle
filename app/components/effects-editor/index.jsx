@@ -28,7 +28,7 @@ const EffectsEditor = ({
     <div className={ className }>
 
       <Title
-        name={'Effects Editor'}
+        name={`Effects Editor (${ chnl.name || '' })`}
         icon={ disableIcon }
         onAction={ () => {
           uiStore.hideEffectsEditor();
