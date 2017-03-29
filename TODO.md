@@ -8,12 +8,14 @@
 - __DONE__ New Design!
 - __DONE__ BUG: Close effect editor if according track is deleted!
 - __DONE__ Make soundcycle utilities a monorepo -> sountility
-- Update documentation
+- __DONE__ Update documentation
 - Fade in / Fade out
 - Ajustable Slider: Shouldn't be able to come over/under maximum/minimum
 - webaudio-effect-units-collection:
   - Add 'canDisable' field to metadata
-  - gain: defaultValue = 0.5
+  - Add better defaultValues
+    - gain: 0.5
+    - lowpass, highpass
 - Test on my device with remote debugging!
 - Audio visualization!
 - Add Effect type: single
