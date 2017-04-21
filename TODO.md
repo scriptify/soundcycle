@@ -16,6 +16,8 @@
   - Add better defaultValues
     - gain: 0.5
     - lowpass, highpass
+- Record button hover effect
+- Record button centered if lanes empty
 - Test on my device with remote debugging!
 - Audio visualization!
 - Add Effect type: single

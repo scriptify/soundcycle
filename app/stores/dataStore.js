@@ -209,7 +209,7 @@ class DataStore {
 
     this.singleSeqChnls = this.singleSeqChnls.filter(chnl => chnl.id !== chnlId);
 
-    api.removeTrack(chnlId);
+    api.removeTrack({ id: chnlId });
 
     if(uiStore.effectsEditor.currentChnl === chnlId) {
       uiStore.hideEffectsEditor();
@@ -226,7 +226,7 @@ class DataStore {
       uiStore.hideEffectsEditor();
 
     this.lanes = this.lanes.filter(lane => lane.id !== laneId);
-    api.removeLane(laneId);
+    api.removeLane({ looperId: laneId });
 
     if(this.recorder.currentLane === laneId) {
       this.recorder.currentLane = (this.lanes.length > 0) ? this.lanes[0] : null;
