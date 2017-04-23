@@ -21,8 +21,11 @@ const Track = ({
   onEffects = () => {},
   onDelete = () => {},
   onTogglePlayStatus = () => {},
+  frequencyData = [],
   ...rest
 }) => {
+
+  const loudness = Math.abs(frequencyData.reduce((f1, f2) => f1 + f2, 0) / frequencyData.length);
 
   let nameComponent = name;
 
@@ -68,9 +71,13 @@ const Track = ({
 
       </div>
 
-      <div className={'icon'} onClick={ onTogglePlayStatus }>
-        <img src={ isPlaying ? pauseIcon : playIcon } />
+      <div className={`body`}>
+        <div className={`loudness`} style={{ height: `${loudness % 70}px` }}/>
+        <div className={'icon'} onClick={ onTogglePlayStatus }>
+          <img src={ isPlaying ? pauseIcon : playIcon } />
+        </div>
       </div>
+
       <div className={'slider-container'}>
         <div className={'center'}>
           <AdjustableSlider {...rest} />

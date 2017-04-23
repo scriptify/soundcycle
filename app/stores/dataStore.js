@@ -3,7 +3,7 @@ import { EFFECT_DATA } from 'webaudio-effect-units-collection';
 
 import SoundCycle from 'soundcyclejs';
 
-import { createStoreableEffects } from './util';
+import { createStoreableEffects, startAnimationLoop } from './util';
 import uiStore from './uiStore';
 
 const api = new SoundCycle(() => {
@@ -68,6 +68,10 @@ class DataStore {
     return value;
   }
 
+  getAnalyser(chnlId) {
+    return api.getAnalyser({ chnlId });
+  }
+
   @observable recorder = {
     id: api.getRecorderChnlId(),
     isRecording: false,
@@ -82,7 +86,8 @@ class DataStore {
     isRecording: false,
     filename: '',
     effects: createStoreableEffects(this.EFFECT_DATA),
-    name: 'Master'
+    name: 'Master',
+    frequencyData: []
   };
 
   @observable singleSeqChnls = [];
@@ -122,7 +127,8 @@ class DataStore {
       isPlaying: true,
       name: `Track ${ lane.chnls.length + 1 }`,
       isEdited: false,
-      effects: createStoreableEffects(this.EFFECT_DATA)
+      effects: createStoreableEffects(this.EFFECT_DATA),
+      frequencyData: []
     });
     this.setMode(this.MODES.ADD_TO_LANE);
   }
@@ -270,5 +276,7 @@ class DataStore {
 }
 
 const storeSingleton = new DataStore();
+
+startAnimationLoop(storeSingleton);
 
 export default storeSingleton;

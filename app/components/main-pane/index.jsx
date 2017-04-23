@@ -8,9 +8,11 @@ import { UI_STORE, DATA_STORE } from 'stores/constants';
 import Lanes from 'components/lanes';
 import EffectsEditor from 'components/effects-editor';
 import Menu from 'components/Menu';
+import FrequencyCanvas from 'components/frequency-canvas';
 
 const MainPane = ({
-  uiStore
+  uiStore,
+  dataStore
 }) => {
 
   const showExclusivePane = uiStore.exclusivePane !== '';
@@ -18,6 +20,7 @@ const MainPane = ({
 
   return (
     <div className={'main-pane'}>
+      <FrequencyCanvas data={dataStore.master.frequencyData} />
       { show('effects-editor') &&
           <EffectsEditor />
       }
@@ -33,4 +36,4 @@ const MainPane = ({
   );
 };
 
-export default inject(UI_STORE)(observer(MainPane));
+export default inject(UI_STORE, DATA_STORE)(observer(MainPane));

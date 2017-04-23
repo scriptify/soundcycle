@@ -56,22 +56,39 @@
 
   }
 
-  & .icon {
-    align-self: center;
-    cursor: pointer;
-  }
+  & .body {
 
-  & .icon img {
-    height: 30px;
-    width: 30px;
-    border: dashed 2px color( #FFF alpha(70%) );
-    border-radius: 50%;
-    transition: border-radius var(--animationDuration) ease-in, border-color var(--animationDuration) ease-in;
-  }
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 74px;
 
-  & .icon img:--enter {
-    border-radius: 10px;
-    border-color: var(--darker);
+    & .loudness {
+      flex-grow: 0.01;
+      width: 3px;
+      background: var(--darkest);
+      align-self: flex-end;
+    }
+
+    & .icon {
+      flex-grow: 0.99;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    & .icon img {
+      height: 30px;
+      width: 30px;
+      border: dashed 2px color( #FFF alpha(70%) );
+      border-radius: 50%;
+      transition: border-radius var(--animationDuration) ease-in, border-color var(--animationDuration) ease-in;
+    }
+
+    & .icon img:--enter {
+      border-radius: 10px;
+      border-color: var(--darker);
+    }
+
   }
 
   & .slider-container {

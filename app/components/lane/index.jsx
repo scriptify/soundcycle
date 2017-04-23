@@ -44,6 +44,7 @@ const Lane = ({
                   name={ chnl.name }
                   isPlaying={ chnl.isPlaying }
                   editMode={ chnl.isEdited }
+                  frequencyData={ chnl.frequencyData }
                   onToggleEditMode={ () => {
                     dataStore.toggleChnlEditMode({ chnlId: chnl.id });
                   }}

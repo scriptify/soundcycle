@@ -1,5 +1,6 @@
 @import "../variables.css";
 
 .menu {
+  z-index: 100;
   animation: fadeIn var(--animationDuration) ease-in;
 }

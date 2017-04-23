@@ -1,6 +1,7 @@
 @import "../variables.css";
 
 .recorder-pane {
+  z-index: 100;
   order: 3;
   background: var(--darkest);
 
