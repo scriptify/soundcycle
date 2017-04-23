@@ -5,7 +5,6 @@ import './style.css';
 
 import { UI_STORE, DATA_STORE } from 'stores/constants';
 
-import Masonry from 'react-masonry-component';
 import Lane from 'components/lane';
 
 const Lanes = ({

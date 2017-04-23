@@ -13,20 +13,26 @@ export const createStoreableEffects = EFFECT_DATA => {
   });
 };
 
+function updateFrequencyData(chnl, dataStore) {
+  const analyser = dataStore.getAnalyser(chnl.id);
+  const arr = new Uint8Array(analyser.frequencyBinCount);
+  analyser.getByteFrequencyData(arr);
+  chnl.frequencyData = arr;
+}
+
 export function startAnimationLoop(dataStore) {
   const draw = () => {
-    const masterAnalyser = dataStore.getAnalyser(dataStore.master.id);
-    const arr = new Uint8Array(masterAnalyser.frequencyBinCount);
-    masterAnalyser.getByteFrequencyData(arr);
-    dataStore.master.frequencyData = arr;
-    dataStore.lanes.forEach((lane) => {
+    updateFrequencyData(dataStore.master, dataStore);
+
+    /*dataStore.lanes.forEach((lane) => {
       lane.chnls.forEach((chnl) => {
-        const analyser = dataStore.getAnalyser(chnl.id);
-        const arr = new Uint8Array(analyser.frequencyBinCount);
-        analyser.getByteFrequencyData(arr);
-        chnl.frequencyData = arr;
+        updateFrequencyData(chnl, dataStore);
       });
     });
+
+    dataStore.freeChnls.forEach((chnl) => {
+      updateFrequencyData(chnl, dataStore);
+    });*/
     window.requestAnimationFrame(draw);
   };
   window.requestAnimationFrame(draw);

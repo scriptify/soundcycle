@@ -1,9 +1,5 @@
 @import "../variables.css";
 
-:root {
-  --borderStyle: dashed 2px var(--orange);
-}
-
 .lane-container {
   animation: fadeIn var(--animationDuration) ease-in;
   & .lane-masonry {

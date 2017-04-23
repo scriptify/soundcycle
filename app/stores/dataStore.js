@@ -41,12 +41,17 @@ class DataStore {
             chnlData = chnl;
             return 0;
           }
-        })
+        });
 
       });
 
       if(!chnlData) {
         chnlData = this.singleSeqChnls.filter(chnl => chnl.id === chnlId)[0];
+      }
+
+
+      if(!chnlData) {
+        chnlData = this.freeChnls.filter(chnl => chnl.id === chnlId)[0];
       }
 
     }
@@ -94,6 +99,8 @@ class DataStore {
 
   @observable lanes = [];
 
+  @observable freeChnls = [];
+
   @action('set project name') setProjectName(name) {
     this.master.filename = name;
     api.setProjectName(name);
@@ -133,6 +140,17 @@ class DataStore {
     this.setMode(this.MODES.ADD_TO_LANE);
   }
 
+  @action(`add free looping chnl`) addFreeChnl({ chnlId }) {
+    this.freeChnls.push({
+      id: chnlId,
+      isPlaying: true,
+      name: `Free ${ this.freeChnls.length + 1 }`,
+      isEdited: false,
+      effects: createStoreableEffects(this.EFFECT_DATA),
+      frequencyData: []
+    });
+  }
+
   @action('toggle edit mode for a chnl name') toggleChnlEditMode({ chnlId }) {
     const chnl = this.getChnlById(chnlId);
     chnl.isEdited = !chnl.isEdited;
@@ -158,7 +176,7 @@ class DataStore {
     } else {
       api.stopRecording()
         .then(({ chnlId, laneId }) => {
-          const { NEW_LANE, ADD_TO_LANE, SINGLE_SEQUENCE } = this.MODES;
+          const { NEW_LANE, ADD_TO_LANE, SINGLE_SEQUENCE, FREE_LOOPING } = this.MODES;
           switch(this.recorder.currentMode) {
             case NEW_LANE:
               this.addLane({
@@ -170,6 +188,12 @@ class DataStore {
             case ADD_TO_LANE:
               this.addToLane({
                 laneId: this.recorder.currentLane,
+                chnlId
+              });
+            break;
+
+            case FREE_LOOPING:
+              this.addFreeChnl({
                 chnlId
               });
             break;
@@ -214,6 +238,8 @@ class DataStore {
     });
 
     this.singleSeqChnls = this.singleSeqChnls.filter(chnl => chnl.id !== chnlId);
+
+    this.freeChnls = this.freeChnls.filter(chnl => chnl.id !== chnlId);
 
     api.removeTrack({ id: chnlId });
 

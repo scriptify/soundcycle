@@ -1,6 +1,7 @@
 @import "../variables.css";
 
 .main-pane {
+  z-index: 100;
   order: 2;
   /*flex-grow: 3.7;*/
   background: var(--darkest);

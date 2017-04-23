@@ -1,0 +1,13 @@
+@import "../variables.css";
+
+.free-looping-container {
+  & .free-looping-masonry {
+    margin: 0 auto;
+  }
+}
+
+@media (--big) {
+  .free-looping-container {
+    width: 50%;
+  }
+}

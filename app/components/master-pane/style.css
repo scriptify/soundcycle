@@ -2,7 +2,7 @@
 
 .master-pane {
   order: 1;
-  z-index: 100;
+  z-index: 1000;
 
   & .effect-container {
     min-width: 100px;

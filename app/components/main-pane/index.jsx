@@ -9,6 +9,7 @@ import Lanes from 'components/lanes';
 import EffectsEditor from 'components/effects-editor';
 import Menu from 'components/Menu';
 import FrequencyCanvas from 'components/frequency-canvas';
+import FreeLooping from 'components/free-looping';
 
 const MainPane = ({
   uiStore,
@@ -25,7 +26,11 @@ const MainPane = ({
           <EffectsEditor />
       }
       {
-        show('lanes') &&
+        show(`lanes`) && dataStore.freeChnls.length > 0 &&
+          <FreeLooping />
+      }
+      {
+        show('lanes') && dataStore.lanes.length > 0 &&
           <Lanes />
       }
       {
