@@ -8,6 +8,7 @@ import App from './components/app';
 import uiStore from './stores/uiStore';
 import dataStore from './stores/dataStore';
 import { DATA_STORE, UI_STORE } from './stores/constants';
+import './controls';
 
 const stores = {
   [DATA_STORE]: dataStore,
