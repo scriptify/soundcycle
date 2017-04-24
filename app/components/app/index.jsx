@@ -8,6 +8,7 @@ import { UI_STORE, DATA_STORE } from 'stores/constants';
 import MainPane from 'components/main-pane';
 import MasterPane from 'components/master-pane';
 import RecorderPane from 'components/recorder-pane';
+import Welcome from 'components/welcome';
 
 @inject(UI_STORE, DATA_STORE)
 @observer
@@ -24,9 +25,15 @@ export default class App extends Component {
 
     return (
       <div className={'app-content'}>
-        <MasterPane />
-        <MainPane />
-        <RecorderPane />
+        {
+          uiStore.showWelcome &&
+            <Welcome onHide={() => uiStore.hideWelcome()}/>
+        }
+        <div className={uiStore.showWelcome ? `looper blur` : `looper`}>
+          <MasterPane />
+          <MainPane />
+          <RecorderPane />
+        </div>
       </div>
     );
   }

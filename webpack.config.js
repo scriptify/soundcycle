@@ -129,7 +129,11 @@ switch(TARGET) {
         inline: true,
         stats: 'errors-only',
         host: '0.0.0.0',
-        https: false
+        https: false,
+        proxy: {
+          '/api': `http://localhost:3000`,
+          '/login': `http://localhost:3000`
+        }
       },
       plugins: [
         new webpack.HotModuleReplacementPlugin()

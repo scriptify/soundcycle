@@ -13,6 +13,14 @@ body {
 }
 
 .app-content {
+
+}
+
+.blur {
+  filter: blur(4px);
+}
+
+.looper {
   display: flex;
   flex-direction: column;
   height: 100%;
