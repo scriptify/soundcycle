@@ -34,6 +34,10 @@ const FrequencyCanvas = ({ data }) => {
     }
 
     avgVal = avgVal / data.length;
+    if (avgVal == 0)
+      avgVal = Math.abs(Math.sin(Date.now() / 1000) * 100);
+    else
+      avgVal *= 2;
     const IMG_H = 100 + avgVal;
     const IMG_W = 100 + avgVal;
 
