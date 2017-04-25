@@ -40,6 +40,13 @@
     }
   }
 
+  & .video {
+    & iframe {
+      border: none;
+      height: 250px;
+    }
+  }
+
   & .buttons {
     display: flex;
     width: 100%;

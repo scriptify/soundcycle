@@ -1,20 +1,23 @@
 import { observable, action } from 'mobx';
 
 class UiStore {
-  @observable showWelcome = true;
+  @observable welcome = {
+    show: true,
+    tutorial: false
+  };
   @observable visiblePanes = ['lanes'];
   @observable exclusivePane = ''; // If a pane is in there, all the other panes need to hide
-
-  @observable tutorial = {
-    active: false
-  };
 
   @observable effectsEditor = {
     currentChnl: null
   };
 
   @action(`hide welcome screen`) hideWelcome() {
-    this.showWelcome = false;
+    this.welcome.show = false;
+  }
+
+  @action(`show tutorial`) showTutorial() {
+    this.welcome.tutorial = true;
   }
 
   @action('set position') setPosition(pos) {

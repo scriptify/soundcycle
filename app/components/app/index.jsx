@@ -26,10 +26,14 @@ export default class App extends Component {
     return (
       <div className={'app-content'}>
         {
-          uiStore.showWelcome &&
-            <Welcome onHide={() => uiStore.hideWelcome()}/>
+          uiStore.welcome.show &&
+            <Welcome
+              onHide={() => uiStore.hideWelcome()}
+              onTutorial={() => uiStore.showTutorial()}
+              showTutorial={uiStore.welcome.tutorial}
+            />
         }
-        <div className={uiStore.showWelcome ? `looper blur` : `looper`}>
+        <div className={uiStore.welcome.show ? `looper blur` : `looper`}>
           <MasterPane />
           <MainPane />
           <RecorderPane />
