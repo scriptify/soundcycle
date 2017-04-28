@@ -1,0 +1,9 @@
+- Exclude overdrive
+- Highpass
+  - frequency default val: 0
+- Lowpass
+  - frequency default value 20000
+- Delay (also ping pong): delay time less!!!
+- Compressor:
+  - What is threshold? (why negative)
+  - Release: Throwing warning that values are out of range
