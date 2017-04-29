@@ -1,8 +1,10 @@
-- Exclude overdrive
+- __DONE__ Exclude overdrive
 - Highpass
   - frequency default val: 0
+  - step: more
 - Lowpass
   - frequency default value 20000
+  - step: more
 - Delay (also ping pong): delay time less!!!
 - Compressor:
   - What is threshold? (why negative)
