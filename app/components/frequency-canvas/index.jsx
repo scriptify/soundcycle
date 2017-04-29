@@ -4,6 +4,7 @@ import './style.css';
 import logo from 'icons/logo.png';
 
 let canvas;
+let started = false;
 const logoImg = new Image();
 logoImg.src = logo;
 
@@ -34,10 +35,12 @@ const FrequencyCanvas = ({ data }) => {
     }
 
     avgVal = avgVal / data.length;
-    if (avgVal == 0)
+    if (avgVal == 0 && !started)
       avgVal = Math.abs(Math.sin(Date.now() / 1000) * 100);
-    else
+    else {
       avgVal *= 2;
+      started = true;
+    }
     const IMG_H = 100 + avgVal;
     const IMG_W = 100 + avgVal;
 

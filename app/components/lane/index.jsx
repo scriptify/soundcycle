@@ -19,6 +19,7 @@ const Lane = ({
 
   const lane = dataStore.lanes.find(lane => lane.id === id);
   const gainData = dataStore.getEffectValueData('gain', 'gain');
+  const { step } = dataStore.getEffectValueData('gain', 'gain');
 
   return (
     <div className={'lane-container'}>
@@ -71,6 +72,12 @@ const Lane = ({
                       valueType: 'gain',
                       value: val
                     });
+                  }}
+                  onMore={ () => {
+                    dataStore.setEffectValue({ chnlId: chnl.id, effectName: 'gain', valueType: 'gain', value: chnlGain.value + step });
+                  }}
+                  onLess={ () => {
+                    dataStore.setEffectValue({ chnlId: chnl.id, effectName: 'gain', valueType: 'gain', value: chnlGain.value - step });
                   }}
                 />
               );
