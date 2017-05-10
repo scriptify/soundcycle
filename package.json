@@ -2,10 +2,11 @@
   "name": "soundcycle",
   "version": "1.0.0",
   "description": "soundcycle - the first real software loopstation",
-  "main": "index.js",
+  "main": "electron.js",
   "scripts": {
     "start:dev": "webpack-dev-server",
-    "start:prod": "webpack"
+    "start:prod": "webpack",
+    "start:desktop": "electron ."
   },
   "keywords": [],
   "author": "Maximilian Torggler",

@@ -3,4 +3,22 @@
 .menu {
   z-index: 100;
   animation: fadeIn var(--animationDuration) ease-in;
+  padding: 10px;
+
+  & .btn {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: solid 3px var(--orange);
+    text-align: center;
+    margin-top: 10px;
+    transition: background var(--animationDuration) ease-in;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+
+  & .btn:--enter {
+    background: var(--orange);
+  }
+
 }

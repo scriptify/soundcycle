@@ -22,7 +22,9 @@ const Menu = ({
           uiStore.hideExclusivePane();
         }}
       />
-      <p>Thank you for using the ALPHA version of Soundcycle! In the ALPHA there are no menu point available yet.</p>
+      <div className={`btn`} onClick={() => window.location.reload()}>
+        Restart app
+      </div>
     </div>
   );
 
