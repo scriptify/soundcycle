@@ -19,7 +19,6 @@ export default class App extends Component {
   }
 
   render() {
-
     const { uiStore } = this.props;
     const { position } = uiStore;
 

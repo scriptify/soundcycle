@@ -3,7 +3,7 @@ import { EFFECT_DATA } from 'webaudio-effect-units-collection';
 
 import SoundCycle from 'soundcyclejs';
 
-import { createStoreableEffects, startAnimationLoop } from './util';
+import { createStoreableEffects } from './util';
 import uiStore from './uiStore';
 
 const api = new SoundCycle(() => {
@@ -302,7 +302,5 @@ class DataStore {
 }
 
 const storeSingleton = new DataStore();
-
-startAnimationLoop(storeSingleton);
 
 export default storeSingleton;

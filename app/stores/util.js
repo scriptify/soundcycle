@@ -20,23 +20,13 @@ function updateFrequencyData(chnl, dataStore) {
   chnl.frequencyData = arr;
 }
 
-export function startAnimationLoop(dataStore) {
+/*export function startAnimationLoop(dataStore) {
   const draw = () => {
     updateFrequencyData(dataStore.master, dataStore);
-
-    /*dataStore.lanes.forEach((lane) => {
-      lane.chnls.forEach((chnl) => {
-        updateFrequencyData(chnl, dataStore);
-      });
-    });
-
-    dataStore.freeChnls.forEach((chnl) => {
-      updateFrequencyData(chnl, dataStore);
-    });*/
     window.requestAnimationFrame(draw);
   };
   window.requestAnimationFrame(draw);
-}
+}*/
 
 export async function fetchJSON(method, data = {}) {
   const headers = new Headers();
