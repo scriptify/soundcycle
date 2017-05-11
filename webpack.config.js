@@ -27,7 +27,7 @@ const COMMON_CONFIGURATION = {
       'components': path.resolve(PATHS.app, 'components'),
       'icons': path.resolve(PATHS.app, 'icons'),
       'stores': path.resolve(PATHS.app, 'stores'),
-      'sountility': path.join(__dirname, `sountility`)
+      'sountility': path.join(PATHS.app, `sountility`)
     }
   },
   output: {

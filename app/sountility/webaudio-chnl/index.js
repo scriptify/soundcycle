@@ -30,7 +30,10 @@ export default class Chnl {
     for (let i = 0; i < (graph.length - 1); i++) {
       const currNode = graph[i];
       const nextNode = graph[i + 1];
-      currNode.connect(nextNode);
+      if (nextNode.isEffectUnit)
+        currNode.connect(nextNode.input);
+      else
+        currNode.connect(nextNode);
     }
 
     this.currentGraph = graph;

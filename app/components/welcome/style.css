@@ -14,7 +14,7 @@
   align-items: center;
   z-index: 2000;
   overflow-y: auto;
-
+  
   & .logo {
     & img {
       width: 100%;

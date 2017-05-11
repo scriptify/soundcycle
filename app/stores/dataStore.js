@@ -1,7 +1,7 @@
 import { observable, action, computed } from 'mobx';
-import { EFFECT_DATA } from 'webaudio-effect-units-collection';
+import { EFFECT_DATA } from 'sountility/webaudio-effect-units-collection';
 
-import SoundCycle from 'soundcyclejs';
+import SoundCycle from 'sountility/soundcyclejs';
 
 import { createStoreableEffects } from './util';
 import uiStore from './uiStore';
