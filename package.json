@@ -40,11 +40,13 @@
     "worker-loader": "*"
   },
   "dependencies": {
+    "inline-worker": "^1.1.0",
     "mobx": "*",
     "mobx-react": "*",
     "rc-slider": "*",
     "react": "*",
     "react-dom": "*",
-    "react-masonry-component": "*"
+    "react-masonry-component": "*",
+    "tunajs": "^1.0.0"
   }
 }
