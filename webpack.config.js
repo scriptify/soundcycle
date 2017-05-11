@@ -12,7 +12,8 @@ HtmlWebpackPlugin = require('html-webpack-plugin');
 const PATHS = {
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build'),
-  assets: path.join(__dirname, 'assets')
+  assets: path.join(__dirname, 'assets'),
+  sountility: path.join(__dirname, `../sountility/packages`)
 };
 
 const TARGET = process.env.npm_lifecycle_event;
@@ -27,7 +28,8 @@ const COMMON_CONFIGURATION = {
       'components': path.resolve(PATHS.app, 'components'),
       'icons': path.resolve(PATHS.app, 'icons'),
       'stores': path.resolve(PATHS.app, 'stores')
-    }
+    },
+    modules: [PATHS.sountility, path.join(__dirname, `node_modules`)]
   },
   output: {
     path: PATHS.build,
