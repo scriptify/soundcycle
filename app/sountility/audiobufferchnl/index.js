@@ -11,7 +11,7 @@ export default class AudioBufferChnl extends Chnl {
 
   setBufferSourceNode(bufferSourceNode) {
     this.bufferSourceNode = bufferSourceNode;
-    this.bufferSourceNode.connect(this);
+    this.bufferSourceNode.connect(this.input);
   }
 
   stop() {

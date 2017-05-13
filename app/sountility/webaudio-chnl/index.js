@@ -5,6 +5,7 @@ export default class Chnl {
   output;
   effects;
   analyser;
+  isChnl = true;
 
   currentGraph = [];
 
@@ -65,7 +66,10 @@ export default class Chnl {
   }
 
   connect(node) {
-    this.output.connect(node);
+    if (node.isChnl)
+      this.output.connect(node.input);
+    else
+      this.output.connect(node);
   }
 
   getAnalyser() {
