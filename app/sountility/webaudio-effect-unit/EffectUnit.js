@@ -44,6 +44,13 @@ class EffectUnit {
     this.setupEffectChain();
   }
 
+  static connectNodes(nodeA, nodeB) {
+    if (nodeB.isEffectUnit || nodeB.input)
+      nodeA.connect(nodeB.input);
+    else
+      nodeA.connect(nodeB);
+  }
+
   enable() {
     this.effectGain.gain.value = 1;
     this.directGain.gain.value = 0;
@@ -55,7 +62,7 @@ class EffectUnit {
   }
 
   connect(node) {
-    if (node.isEffectUnit)
+    if (node.isEffectUnit || node.input)
       this.output.connect(node.input);
     else {
       // Common audioNode
@@ -90,10 +97,11 @@ class EffectUnit {
     // Effect chain not empty?
     if (effects.length >= 1) {
       // Connect effect gain to first effect
-      this.effectGain.connect(effects[0]);
+      EffectUnit.connectNodes(this.effectGain, effects[0]);
       // Connect all other effect to the following effect
-      for (let i = 0; i < (effects.length - 1); i++)
-        effects[i].connect(effects[i + 1]);
+      for (let i = 0; i < (effects.length - 1); i++) {
+        EffectUnit.connectNodes(effects[i], effects[i + 1])
+      }
 
       // Connect the last effect to the output gain
       effects[effects.length - 1].connect(this.output);

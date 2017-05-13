@@ -16,17 +16,20 @@ import createPingPongDelay, { pingPongDelayData } from './effects/pingPongDelay'
 import createGain, { gainData } from './effects/gain';
 import createLowpass, { lowpassData } from './effects/lowpass';
 import createHighpass, { highpassData } from './effects/highpass';
+import createDubDelay, { dubDelayData } from './effects/dubDelay';
 
 export const EFFECT_DATA = [
   gainData,
   highpassData,
-  lowpassData
+  lowpassData,
+  dubDelayData
 ];
 
 export default function createEffectCollection(audioCtx) {
   return {
     gain: createGain(audioCtx),
     lowpass: createLowpass(audioCtx),
-    highpass: createHighpass(audioCtx)
+    highpass: createHighpass(audioCtx),
+    dubDelay: createDubDelay(audioCtx)
   };
 }
