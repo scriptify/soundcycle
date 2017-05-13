@@ -1,37 +1,5 @@
-import baseEffect from './pizzicato-base';
+import { baseEffect, isNumber, isInRange, getWetLevel, getDryLevel } from './pizzicato';
 import EffectUnit from 'sountility/webaudio-effect-unit';
-
-
-function isNumber(arg) {
-	return toString.call(arg) === '[object Number]' && arg === +arg;
-}
-
-function isInRange(arg, min, max) {
-	if (!isNumber(arg) || !isNumber(min) || !isNumber(max))
-		return false;
-
-	return arg >= min && arg <= max;
-}
-
-function getWetLevel(mix) {
-		if (!isNumber(mix) || mix > 1 || mix < 0)
-			return 0;
-
-		if (mix >= 0.5)
-			return 1;
-
-		return 1 - ((0.5 - mix) * 2);
-	}
-
-function getDryLevel(mix) {
-	if (!isNumber(mix) || mix > 1 || mix < 0)
-		return 0;
-
-	if (mix <= 0.5)
-		return 1;
-
-	return 1 - ((mix - 0.5) * 2);
-}
 
 let DubDelay = function(audioCtx, options) {
 
@@ -219,7 +187,7 @@ export const dubDelayData = {
   ]
 };
 
-export default function createGain(audioCtx) {
+export default function createDubDelay(audioCtx) {
 
   const dubDelayNode = new DubDelay(audioCtx);
 

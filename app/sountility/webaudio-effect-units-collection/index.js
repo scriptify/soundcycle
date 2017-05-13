@@ -17,12 +17,14 @@ import createGain, { gainData } from './effects/gain';
 import createLowpass, { lowpassData } from './effects/lowpass';
 import createHighpass, { highpassData } from './effects/highpass';
 import createDubDelay, { dubDelayData } from './effects/dubDelay';
+import createReverb, { reverbData } from './effects/reverb';
 
 export const EFFECT_DATA = [
   gainData,
   highpassData,
   lowpassData,
-  dubDelayData
+  dubDelayData,
+  reverbData
 ];
 
 export default function createEffectCollection(audioCtx) {
@@ -30,6 +32,7 @@ export default function createEffectCollection(audioCtx) {
     gain: createGain(audioCtx),
     lowpass: createLowpass(audioCtx),
     highpass: createHighpass(audioCtx),
-    dubDelay: createDubDelay(audioCtx)
+    dubDelay: createDubDelay(audioCtx),
+    reverb: createReverb(audioCtx)
   };
 }
