@@ -143,7 +143,7 @@ export const reverbData = {
       name: `time`,
       options: {
         type: `range`,
-        defaultValue: 0.01,
+        defaultValue: 5,
         min: 0.0001,
         max: 10,
         step: 0.001
@@ -157,7 +157,7 @@ export const reverbData = {
       name: `decay`,
       options: {
         type: `range`,
-        defaultValue: 0.01,
+        defaultValue: 3,
         min: 0.0001,
         max: 10,
         step: 0.001
@@ -181,14 +181,11 @@ export const reverbData = {
   ]
 };
 
-export default function createDubDelay(audioCtx) {
-
-  const reverbNode = new Reverb(audioCtx);
-
+export default function createReverbDelay(audioCtx) {
   return new EffectUnit({
     ...reverbData,
     effectChain: {
-      reverb: reverbNode
+      reverb: () => new Reverb(audioCtx)
     }
   }, audioCtx);
 }

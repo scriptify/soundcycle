@@ -8,12 +8,15 @@ class EffectUnit {
   effectChain;
   values;
   isEffectUnit = true;
+  wasInitialized = false;
 
   effectGain;
   directGain;
 
   output;
   input;
+
+  options;
 
   constructor(options = { name: ``, effectChain: {}, values: [] }, audioCtx) {
     /*
@@ -30,18 +33,19 @@ class EffectUnit {
 
     this.name = name;
     this.audioCtx = audioCtx;
-    this.effectChain = functionsToValues(options.effectChain);
+    this.options = options;
 
-    // Give all 'set'-methods of the specified values the effectChain as the first parameter
-    this.values = bindMethodsToValues(options.values, this.effectChain);
+    this.effectGain = this.audioCtx.createGain(); // Set to 1 ==> Effect is on; Set to 0 ==> Effect is off
+    this.directGain = this.audioCtx.createGain(); // Set to 0 ==> Effect is on; Set to 1 ==> Effect is off
 
-    // Now execute all 'set'-methods of the according values which have a 'defaultValue'-field in their 'options'-object
-    this.values.forEach((value) => {
-      if (value.options.defaultValue)
-        value.set(value.options.defaultValue);
-    });
+    this.output = this.audioCtx.createGain();
+    this.input = this.audioCtx.createGain();
 
-    this.setupEffectChain();
+    this.input.connect(this.effectGain);
+    this.input.connect(this.directGain);
+
+    // Connect direct gain to ouput
+    this.directGain.connect(this.output);
   }
 
   static connectNodes(nodeA, nodeB) {
@@ -51,7 +55,27 @@ class EffectUnit {
       nodeA.connect(nodeB);
   }
 
+  init() {
+    if (this.wasInitialized)
+      return;
+
+    this.effectChain = functionsToValues(this.options.effectChain);
+
+    // Give all 'set'-methods of the specified values the effectChain as the first parameter
+    this.values = bindMethodsToValues(this.options.values, this.effectChain);
+
+    // Now execute all 'set'-methods of the according values which have a 'defaultValue'-field in their 'options'-object
+    this.values.forEach((value) => {
+      if (value.options.defaultValue)
+        value.set(value.options.defaultValue);
+    });
+
+    this.setupEffectChain();
+    this.wasInitialized = true;
+  }
+
   enable() {
+    this.init();
     this.effectGain.gain.value = 1;
     this.directGain.gain.value = 0;
   }
@@ -79,17 +103,6 @@ class EffectUnit {
   }
 
   setupEffectChain() {
-    this.effectGain = this.audioCtx.createGain(); // Set to 1 ==> Effect is on; Set to 0 ==> Effect is off
-    this.directGain = this.audioCtx.createGain(); // Set to 0 ==> Effect is on; Set to 1 ==> Effect is off
-
-    this.output = this.audioCtx.createGain();
-    this.input = this.audioCtx.createGain();
-
-    this.input.connect(this.effectGain);
-    this.input.connect(this.directGain);
-
-    // Connect direct gain to ouput
-    this.directGain.connect(this.output);
 
     // Connect the effectChain
     const effects = objToArray(this.effectChain);
@@ -106,9 +119,6 @@ class EffectUnit {
       // Connect the last effect to the output gain
       effects[effects.length - 1].connect(this.output);
     }
-
-    // Turn on after the effectChain was connected
-    this.enable();
   }
 
   disconnect() {

@@ -188,13 +188,10 @@ export const dubDelayData = {
 };
 
 export default function createDubDelay(audioCtx) {
-
-  const dubDelayNode = new DubDelay(audioCtx);
-
   return new EffectUnit({
     ...dubDelayData,
     effectChain: {
-      dubDelay: dubDelayNode
+      dubDelay: () => new DubDelay(audioCtx)
     }
   }, audioCtx);
 }
