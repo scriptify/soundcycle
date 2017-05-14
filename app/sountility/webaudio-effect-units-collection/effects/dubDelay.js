@@ -163,7 +163,7 @@ export const dubDelayData = {
         defaultValue: 0.7,
         min: 0,
         max: 180,
-        step: 1
+        step: 0.01
       },
       set: (effectChain, value) => {
         effectChain.dubDelay.time = value;
