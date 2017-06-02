@@ -4,7 +4,7 @@ import uiStore from 'stores/uiStore';
 window.addEventListener(`keypress`, (e) => {
   switch (e.keyCode) {
     case 32: // space
-      dataStore.toggleRecording();
+      dataStore.toggleRecording(null, true);
     break;
   }
 });

@@ -31,7 +31,7 @@ const EffectsEditor = ({
         name={`Effects Editor (${ chnl.name || '' })`}
         icon={ disableIcon }
         onAction={ () => {
-          uiStore.hideEffectsEditor();
+          uiStore.hideEffectsEditor(null, true);
         }}
       />
 
@@ -55,7 +55,7 @@ const EffectsEditor = ({
                   dataStore.toggleEffect({
                     chnlId: uiStore.effectsEditor.currentChnl,
                     effectName: name
-                  });
+                  }, true);
                 }}
               >
                 <div className={'name'}>
@@ -87,7 +87,7 @@ const EffectsEditor = ({
                   dataStore.toggleEffect({
                     chnlId: uiStore.effectsEditor.currentChnl,
                     effectName: effect.name
-                  });
+                  }, true);
                 }}
               />
               <div className={'effects-container'}>
@@ -113,7 +113,7 @@ const EffectsEditor = ({
                                 effectName: effect.name,
                                 valueType: value.name,
                                 value: val
-                              });
+                              }, true);
                             }}
                             onMore={ () => {
                               dataStore.setEffectValue({
@@ -121,7 +121,7 @@ const EffectsEditor = ({
                                 effectName: effect.name,
                                 valueType: value.name,
                                 value: value.value + valueData.step
-                              });
+                              }, true);
                             }}
                             onLess={ () => {
                               dataStore.setEffectValue({
@@ -129,7 +129,7 @@ const EffectsEditor = ({
                                 effectName: effect.name,
                                 valueType: value.name,
                                 value: value.value - valueData.step
-                              });
+                              }, true);
                             }}
                           />
                       </div>

@@ -2,19 +2,32 @@ import { observable, action, computed } from 'mobx';
 import { EFFECT_DATA } from 'sountility/webaudio-effect-units-collection';
 
 import SoundCycle from 'sountility/soundcyclejs';
+import { isController } from '../controls/remote';
 
 import { createStoreableEffects } from './util';
 import uiStore from './uiStore';
 
-const api = new SoundCycle(() => {
-  console.log('Ready.');
-});
+let api = {};
+if (isController()) {
+  api = new Proxy(api, {
+    get(target, propKey, receiver) {
+      const prop = target[propKey];
+      if (typeof prop === `function` || !prop)
+        return () => new Promise(() => {});
+      return prop;
+    }
+  });
+} else {
+  api = new SoundCycle(() => {
+    console.log('Ready.');
+  });
+}
 
 class DataStore {
 
   EFFECT_DATA = EFFECT_DATA;
   MAX_CHNL_NAME_LENGTH = 8;
-  MODES = api.getModes();
+  MODES = SoundCycle.MODES;
 
   getEffectValueData(effectName, valueName) {
     return this.EFFECT_DATA.filter(eff => eff.name === effectName)[0].values.filter(val => val.name === valueName)[0].options;
@@ -78,16 +91,16 @@ class DataStore {
   }
 
   @observable recorder = {
-    id: api.getRecorderChnlId(),
+    id: SoundCycle.recorderChnlId,
     isRecording: false,
-    currentMode: api.getCurrentMode(),
+    currentMode: this.MODES.NEW_LANE,
     currentLane: null,
     effects: createStoreableEffects(this.EFFECT_DATA),
     name: 'Recorder'
   };
 
   @observable master = {
-    id: api.getMasterChnlId(),
+    id: SoundCycle.masterChnlId,
     isRecording: false,
     filename: '',
     effects: createStoreableEffects(this.EFFECT_DATA),
@@ -122,7 +135,7 @@ class DataStore {
       name: `Lane ${ this.lanes.length + 1 }`,
       chnls: []
     });
-    this.addToLane({ laneId, chnlId });
+    this.addToLane(({ laneId, chnlId }));
     // Auto select lane
     this.setCurrentLane(laneId);
   }
@@ -169,7 +182,7 @@ class DataStore {
     });
   }
 
-  @action('toggle recording') toggleRecording() {
+  @action('toggle recording') toggleRecording(param) {
     this.recorder.isRecording = !this.recorder.isRecording;
     if(this.recorder.isRecording) {
       api.startRecording();
@@ -182,24 +195,24 @@ class DataStore {
               this.addLane({
                 laneId,
                 chnlId
-              });
+              }, true);
             break;
 
             case ADD_TO_LANE:
               this.addToLane({
                 laneId: this.recorder.currentLane,
                 chnlId
-              });
+              }, true);
             break;
 
             case FREE_LOOPING:
               this.addFreeChnl({
                 chnlId
-              });
+              }, true);
             break;
 
             case SINGLE_SEQUENCE:
-              this.addToSingleSeqChnls(chnlId);
+              this.addToSingleSeqChnls(chnlId, true);
             break;
           }
         });

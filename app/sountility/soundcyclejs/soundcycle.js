@@ -12,7 +12,7 @@ export default class SoundCycle {
   wmstr;
   audioCtx;
 
-  MODES = {
+  static MODES = {
     ADD_TO_LANE: `ADD_TO_LANE`,
     NEW_LANE: `NEW_LANE`,
     SINGLE_SEQUENCE: `SINGLE_SEQUENCE`,
@@ -25,8 +25,8 @@ export default class SoundCycle {
   currentMode;
   projectName;
 
-  masterChnlId = `MASTER_ID`;
-  recorderChnlId = `RECORDER_ID`;
+  static masterChnlId = `MASTER_ID`;
+  static recorderChnlId = `RECORDER_ID`;
 
   constructor(readyCb = () => {}) {
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -36,10 +36,10 @@ export default class SoundCycle {
       .then(readyCb);
 
     this.wmstr = new Wmstr(audioCtx);
-    this.currentMode = this.MODES.NEW_LANE;
+    this.currentMode = SoundCycle.MODES.NEW_LANE;
 
-    this.tracks.set(this.masterChnlId, this.wmstr);
-    this.tracks.set(this.recorderChnlId, this.recorder);
+    this.tracks.set(SoundCycle.masterChnlId, this.wmstr);
+    this.tracks.set(SoundCycle.recorderChnlId, this.recorder);
 
     this.wmstr.connect(this.audioCtx.destination);
   }
@@ -58,7 +58,7 @@ export default class SoundCycle {
   }
 
   getModes() {
-    return this.MODES;
+    return SoundCycle.MODES;
   }
 
   getCurrentMode() {
@@ -82,7 +82,7 @@ export default class SoundCycle {
 
     switch (this.currentMode) {
 
-      case this.MODES.NEW_LANE: {
+      case SoundCycle.MODES.NEW_LANE: {
         // Add new looper
         const looper = new AudioLooper(this.audioCtx);
         const audioBuffer = await this.recorder.stopRecording({ type: `buffer` });
@@ -104,7 +104,7 @@ export default class SoundCycle {
         };
       }
 
-      case this.MODES.SINGLE_SEQUENCE: {
+      case SoundCycle.MODES.SINGLE_SEQUENCE: {
         const audioObj = await this.recorder.stopRecording({ type: `audio` });
         const audioChnl = new AudioChnl(this.audioCtx, audioObj);
         audioChnl.connect(this.wmstr);
@@ -118,7 +118,7 @@ export default class SoundCycle {
         };
       }
 
-      case this.MODES.ADD_TO_LANE: {
+      case SoundCycle.MODES.ADD_TO_LANE: {
         if (!this.loopers.has(this.currentLane))
           throw new Error(`You tried to access an inexistent lane!`);
 
@@ -138,7 +138,7 @@ export default class SoundCycle {
         };
       }
 
-      case this.MODES.FREE_LOOPING: {
+      case SoundCycle.MODES.FREE_LOOPING: {
         const audioBuffer = await this.recorder.stopRecording({ type: `buffer` });
 
         const bufferNode = this.audioCtx.createBufferSource();
@@ -255,11 +255,11 @@ export default class SoundCycle {
   }
 
   getMasterChnlId() {
-    return this.masterChnlId;
+    return SoundCycle.masterChnlId;
   }
 
   getRecorderChnlId() {
-    return this.recorderChnlId;
+    return SoundCycle.recorderChnlId;
   }
 
   startProjectRecording() {
@@ -277,9 +277,9 @@ export default class SoundCycle {
   /* INTERIOR FUNCTIONALITIES */
 
   getChnlById(id) {
-    if (id === this.masterChnlId)
+    if (id === SoundCycle.masterChnlId)
       return this.wmstr;
-    else if (id === this.recorderChnlId)
+    else if (id === SoundCycle.recorderChnlId)
       return this.recorder;
 
     if (!this.tracks.has(id))

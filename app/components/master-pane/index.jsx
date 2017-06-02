@@ -35,13 +35,13 @@ const MasterPane = ({
             max={ masterGainData.max }
             step={ masterGainData.step }
             onChange={ val => {
-              dataStore.setEffectValue({ chnlId: dataStore.master.id, effectName: 'gain', valueType: 'gain', value: val });
+              dataStore.setEffectValue({ chnlId: dataStore.master.id, effectName: 'gain', valueType: 'gain', value: val }, true);
             }}
             onMore={ () => {
-              dataStore.setEffectValue({ chnlId: dataStore.master.id, effectName: 'gain', valueType: 'gain', value: masterGainValue + masterGainData.step });
+              dataStore.setEffectValue({ chnlId: dataStore.master.id, effectName: 'gain', valueType: 'gain', value: masterGainValue + masterGainData.step }, true);
             }}
             onLess={ () => {
-              dataStore.setEffectValue({ chnlId: dataStore.master.id, effectName: 'gain', valueType: 'gain', value: masterGainValue - masterGainData.step });
+              dataStore.setEffectValue({ chnlId: dataStore.master.id, effectName: 'gain', valueType: 'gain', value: masterGainValue - masterGainData.step }, true);
             }}
           />
         </div>
@@ -50,7 +50,7 @@ const MasterPane = ({
           <RecordBtn
             isRecording={ dataStore.master.isRecording }
             onClick={ () => {
-              dataStore.toggleProjectRecording();
+              dataStore.toggleProjectRecording(null, true);
             }}
           />
           <div className={'txt-input'}>
@@ -58,7 +58,7 @@ const MasterPane = ({
               type={'text'}
               value={ dataStore.master.filename }
               onChange={ e => {
-                dataStore.setProjectName(e.target.value);
+                dataStore.setProjectName(e.target.value, true);
               }}
             />
           </div>
@@ -67,14 +67,14 @@ const MasterPane = ({
         <NavigateBtn
           image={ settingsImg }
           onClick={ () => {
-            uiStore.showMenu();
+            uiStore.showMenu(null, true);
           }}
         />
 
         <NavigateBtn
           image={ effectsImg }
           onClick={ () => {
-            uiStore.showEffectsEditor( dataStore.master.id );
+            uiStore.showEffectsEditor( dataStore.master.id, true );
           }}
         />
 

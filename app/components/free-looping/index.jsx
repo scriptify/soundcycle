@@ -27,19 +27,19 @@ const FreeLooping = ({ dataStore, uiStore }) => {
                 editMode={ chnl.isEdited }
                 frequencyData={ chnl.frequencyData }
                 onToggleEditMode={ () => {
-                  dataStore.toggleChnlEditMode({ chnlId: chnl.id });
+                  dataStore.toggleChnlEditMode({ chnlId: chnl.id }, true);
                 }}
                 onNameChange={ val => {
-                  dataStore.changeChnlName({ chnlId: chnl.id, name: val });
+                  dataStore.changeChnlName({ chnlId: chnl.id, name: val }, true);
                 }}
                 onEffects={ () => {
-                  uiStore.showEffectsEditor(chnl.id);
+                  uiStore.showEffectsEditor(chnl.id, true);
                 }}
                 onDelete={ () => {
-                  dataStore.removeTrack(chnl.id);
+                  dataStore.removeTrack(chnl.id, true);
                 }}
                 onTogglePlayStatus={ () => {
-                  dataStore.togglePlayStatus(chnl.id);
+                  dataStore.togglePlayStatus(chnl.id, true);
                 }}
                 value={ chnlGain.value }
                 min={ gainData.min }
@@ -51,7 +51,7 @@ const FreeLooping = ({ dataStore, uiStore }) => {
                     effectName: 'gain',
                     valueType: 'gain',
                     value: val
-                  });
+                  }, true);
                 }}
               />
             );

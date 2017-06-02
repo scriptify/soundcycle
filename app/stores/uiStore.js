@@ -47,7 +47,7 @@ class UiStore {
     document.querySelector('.main-pane').scrollTop = 0;
   }
 
-  @action('hide effects editor') hideEffectsEditor() {
+  @action('hide effects editor') hideEffectsEditor(param) {
     this.removeVisiblePane('effects-editor');
     this.effectsEditor.currentChnl = null;
   }
@@ -60,7 +60,7 @@ class UiStore {
     this.exclusivePane = '';
   }
 
-  @action('display menu') showMenu() {
+  @action('display menu') showMenu(param) {
     this.showExclusivePane('menu');
   }
 

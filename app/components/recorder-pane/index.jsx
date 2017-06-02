@@ -34,13 +34,13 @@ const RecorderPane = ({
             max={ recorderGainData.max }
             step={ recorderGainData.step }
             onChange={ val => {
-              dataStore.setEffectValue({ chnlId: dataStore.recorder.id, effectName: 'gain', valueType: 'gain', value: val });
+              dataStore.setEffectValue({ chnlId: dataStore.recorder.id, effectName: 'gain', valueType: 'gain', value: val }, true);
             }}
             onMore={ () => {
-              dataStore.setEffectValue({ chnlId: dataStore.recorder.id, effectName: 'gain', valueType: 'gain', value: recorderGainValue + recorderGainData.step });
+              dataStore.setEffectValue({ chnlId: dataStore.recorder.id, effectName: 'gain', valueType: 'gain', value: recorderGainValue + recorderGainData.step }, true);
             }}
             onLess={ () => {
-              dataStore.setEffectValue({ chnlId: dataStore.recorder.id, effectName: 'gain', valueType: 'gain', value: recorderGainValue - recorderGainData.step });
+              dataStore.setEffectValue({ chnlId: dataStore.recorder.id, effectName: 'gain', valueType: 'gain', value: recorderGainValue - recorderGainData.step }, true);
             }}
           />
         </div>
@@ -48,7 +48,7 @@ const RecorderPane = ({
         <RecordBtn
           isRecording={ dataStore.recorder.isRecording }
           onClick={ () => {
-            dataStore.toggleRecording();
+            dataStore.toggleRecording(null, true);
           }}
         />
 
@@ -58,14 +58,14 @@ const RecorderPane = ({
             return { value: lane.name, id: lane.id };
           }) }
           onSelect={ lane => {
-            dataStore.setCurrentLane(lane.id);
+            dataStore.setCurrentLane(lane.id, true);
           }}
         />
 
         <NavigateBtn
           image={ effectsImg }
           onClick={ () => {
-            uiStore.showEffectsEditor(dataStore.recorder.id);
+            uiStore.showEffectsEditor(dataStore.recorder.id, true);
           }}
         />
 
@@ -75,20 +75,20 @@ const RecorderPane = ({
         <div
           className={ isMode(dataStore.MODES.NEW_LANE) ? 'option left selected' : 'option left' }
           onClick={ () => {
-            dataStore.setMode(dataStore.MODES.NEW_LANE)
+            dataStore.setMode(dataStore.MODES.NEW_LANE, true)
           }}
         >New</div>
         <div
           className={ isMode(dataStore.MODES.ADD_TO_LANE) ? 'option selected' : 'option' }
           onClick={ () => {
             if(dataStore.lanes.length !== 0)
-              dataStore.setMode(dataStore.MODES.ADD_TO_LANE)
+              dataStore.setMode(dataStore.MODES.ADD_TO_LANE, true)
           }}
         >Add</div>
         <div
           className={ isMode(dataStore.MODES.FREE_LOOPING) ? 'option selected right' : 'option right' }
           onClick={ () => {
-            dataStore.setMode(dataStore.MODES.FREE_LOOPING)
+            dataStore.setMode(dataStore.MODES.FREE_LOOPING, true)
           }}
         >Free</div>
       </div>

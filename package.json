@@ -2,11 +2,11 @@
   "name": "soundcycle",
   "version": "1.0.0",
   "description": "soundcycle - the first real software loopstation",
-  "main": "electron.js",
+  "main": "electron/index.js",
   "scripts": {
     "start:dev": "webpack-dev-server",
     "start:prod": "webpack",
-    "start:desktop": "electron ."
+    "start:desktop": "electron ./electron"
   },
   "keywords": [],
   "author": "Maximilian Torggler",
@@ -41,6 +41,7 @@
     "worker-loader": "*"
   },
   "dependencies": {
+    "express": "^4.15.3",
     "inline-worker": "^1.1.0",
     "mobx": "*",
     "mobx-react": "*",
@@ -48,6 +49,8 @@
     "react": "*",
     "react-dom": "*",
     "react-masonry-component": "*",
+    "socket.io": "^2.0.1",
+    "socket.io-client": "^2.0.2",
     "tunajs": "^1.0.0"
   }
 }

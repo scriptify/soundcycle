@@ -1,1 +1,2 @@
 import './keyboard';
+import './remote';

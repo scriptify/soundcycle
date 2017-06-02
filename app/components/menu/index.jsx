@@ -19,7 +19,7 @@ const Menu = ({
         name={'Menu'}
         icon={ closeIcon }
         onAction={ () => {
-          uiStore.hideExclusivePane();
+          uiStore.hideExclusivePane(null, true);
         }}
       />
       <div className={`btn`} onClick={() => window.location.reload()}>

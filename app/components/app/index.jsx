@@ -27,8 +27,8 @@ export default class App extends Component {
         {
           uiStore.welcome.show &&
             <Welcome
-              onHide={() => uiStore.hideWelcome()}
-              onTutorial={() => uiStore.showTutorial()}
+              onHide={() => uiStore.hideWelcome(null, true)}
+              onTutorial={() => uiStore.showTutorial(null, true)}
               showTutorial={uiStore.welcome.tutorial}
             />
         }

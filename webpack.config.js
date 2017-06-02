@@ -131,6 +131,7 @@ switch(TARGET) {
         stats: 'errors-only',
         host: '0.0.0.0',
         https: false,
+        disableHostCheck: true,
         proxy: {
           '/api': `http://localhost:3000`,
           '/login': `http://localhost:3000`
