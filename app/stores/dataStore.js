@@ -178,7 +178,8 @@ class DataStore {
     this.singleSeqChnls.push({
       id: chnlId,
       isPlaying: false,
-      effects: createStoreableEffects(this.EFFECT_DATA)
+      effects: createStoreableEffects(this.EFFECT_DATA),
+      name: `Single ${this.singleSeqChnls.length + 1}`
     });
   }
 
@@ -240,6 +241,10 @@ class DataStore {
     } else {
       api.stopTrack({ id: chnlId });
     }
+  }
+
+  @action(`play single sequence track`) playSingleSeq(chnlId) {
+    api.playTrack({ id: chnlId });
   }
 
   @action('remove track') removeTrack(chnlId) {

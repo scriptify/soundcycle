@@ -105,12 +105,27 @@ export default class SoundCycle {
       }
 
       case SoundCycle.MODES.SINGLE_SEQUENCE: {
-        const audioObj = await this.recorder.stopRecording({ type: `audio` });
-        const audioChnl = new AudioChnl(this.audioCtx, audioObj);
-        audioChnl.connect(this.wmstr);
+        const audioBuffer = await this.recorder.stopRecording({ type: `buffer` });
+
+        const bufferNode = this.audioCtx.createBufferSource();
+        bufferNode.buffer = audioBuffer;
+
+        // Create fade
+        for (let channel = 0; channel < audioBuffer.numberOfChannels; channel++) {
+          const channelData = audioBuffer.getChannelData(channel);
+          const FADE_LENGTH = 100;
+          for (let i = 0; i < FADE_LENGTH && i < channelData.length; i++) {
+            const fadeOutPos = channelData.length - i - 1;
+            channelData[i] = (channelData[i] * i) / FADE_LENGTH;
+            channelData[fadeOutPos] = (channelData[fadeOutPos] * i) / FADE_LENGTH;
+          }
+        }
+
+        const audioBufferChnl = new AudioBufferChnl(this.audioCtx, bufferNode);
+        audioBufferChnl.connect(this.wmstr);
 
         this.tracks.set(newTrackId, {
-          chnl: audioChnl
+          chnl: audioBufferChnl,
         });
 
         return {
@@ -195,7 +210,6 @@ export default class SoundCycle {
       throw new Error(`You tried to play an inexistent track!`);
 
     const track = this.tracks.get(id);
-
     if (!track.looperId)
       track.chnl.play();
     else {
@@ -214,7 +228,7 @@ export default class SoundCycle {
       looper.removeTrack({ id });
     }
     if (track.chnl.bufferSourceNode)
-      track.chnl.bufferSourceNode.stop();
+      track.chnl.stop();
 
     this.tracks.delete(id);
   }

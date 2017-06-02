@@ -86,6 +86,12 @@ const RecorderPane = ({
           }}
         >Add</div>
         <div
+          className={ isMode(dataStore.MODES.SINGLE_SEQUENCE) ? 'option selected' : 'option' }
+          onClick={ () => {
+            dataStore.setMode(dataStore.MODES.SINGLE_SEQUENCE, true)
+          }}
+        >Single</div>
+        <div
           className={ isMode(dataStore.MODES.FREE_LOOPING) ? 'option selected right' : 'option right' }
           onClick={ () => {
             dataStore.setMode(dataStore.MODES.FREE_LOOPING, true)

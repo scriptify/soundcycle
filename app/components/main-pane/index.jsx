@@ -9,6 +9,7 @@ import Lanes from 'components/lanes';
 import EffectsEditor from 'components/effects-editor';
 import Menu from 'components/menu';
 import FreeLooping from 'components/free-looping';
+import SingleSequence from 'components/single-sequence';
 
 const MainPane = ({
   uiStore,
@@ -22,6 +23,10 @@ const MainPane = ({
     <div className={'main-pane'}>
       { show('effects-editor') &&
           <EffectsEditor />
+      }
+      {
+        show(`lanes`) && dataStore.singleSeqChnls.length > 0 &&
+          <SingleSequence />
       }
       {
         show(`lanes`) && dataStore.freeChnls.length > 0 &&

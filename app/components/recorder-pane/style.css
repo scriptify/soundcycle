@@ -12,8 +12,7 @@
   & .mode-select {
     background: color( var(--darker) blackness(80%));
     width: 30%;
-    min-width: 70px;
-    max-width: 200px;
+    min-width: 200px;
     margin: 0 auto;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -48,4 +47,14 @@
     }
   }
 
+}
+
+@media (--mobile) {
+  .recorder-pane {
+    & .mode-select {
+      width: 100%;
+      border: none;
+      border-radius: 0;
+    }
+  }
 }
