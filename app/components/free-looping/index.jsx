@@ -33,7 +33,7 @@ const FreeLooping = ({ dataStore, uiStore }) => {
                   dataStore.changeChnlName({ chnlId: chnl.id, name: val }, true);
                 }}
                 onEffects={ () => {
-                  uiStore.showEffectsEditor(chnl.id, true);
+                  uiStore.showEffectsEditor(chnl.id);
                 }}
                 onDelete={ () => {
                   dataStore.removeTrack(chnl.id, true);

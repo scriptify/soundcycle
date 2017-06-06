@@ -31,7 +31,7 @@ const EffectsEditor = ({
         name={`Effects Editor (${ chnl.name || '' })`}
         icon={ disableIcon }
         onAction={ () => {
-          uiStore.hideEffectsEditor(null, true);
+          uiStore.hideEffectsEditor(null);
         }}
       />
 
