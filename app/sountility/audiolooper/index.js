@@ -66,7 +66,7 @@ export default class AudioLooper {
     const numParts = Math.floor(part / this.firstTrack.duration);
     const offset = part - (numParts * this.firstTrack.duration);
 
-    bufferNode.start(0, offset);
+    bufferNode.start(this.firstTrack.duration - offset);
 
     // Return bufferNode, so user can connect it ecc.
     trackAdded(bufferNode);
