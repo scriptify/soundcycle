@@ -42,7 +42,7 @@ export default class AudioLooper {
 
       finalAudioBuffer = newAudioBuffer;
     } else
-      finalAudioBuffer = audioBuffer;
+    finalAudioBuffer = audioBuffer;
 
     // Create buffersourcenode
     const bufferNode = this.audioCtx.createBufferSource();
@@ -66,7 +66,7 @@ export default class AudioLooper {
     const numParts = Math.floor(part / this.firstTrack.duration);
     const offset = part - (numParts * this.firstTrack.duration);
 
-    bufferNode.start(this.firstTrack.duration - offset);
+    bufferNode.start(0);
 
     // Return bufferNode, so user can connect it ecc.
     trackAdded(bufferNode);
