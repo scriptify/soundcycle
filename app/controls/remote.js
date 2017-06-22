@@ -10,7 +10,7 @@ export function isController() {
 export default function createRemoteListener() {
   const isController = window.location.hash.indexOf(`controller`) !== -1;
   // Not running in electron/not being the controller ==> basic browser
-  if (!isController && !(window && window.process && window.process.type))
+  if (!isController || !(window && window.process && window.process.type))
     return;
   const socket = io(`http://192.168.0.108:3000`);
   socket.on(`action`, ({ name, param, type }) => {
