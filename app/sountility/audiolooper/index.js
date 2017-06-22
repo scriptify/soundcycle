@@ -42,7 +42,7 @@ export default class AudioLooper {
 
       finalAudioBuffer = newAudioBuffer;
     } else
-    finalAudioBuffer = audioBuffer;
+      finalAudioBuffer = audioBuffer;
 
     // Create buffersourcenode
     const bufferNode = this.audioCtx.createBufferSource();
