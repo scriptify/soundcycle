@@ -30,14 +30,16 @@ export default class AudioLooper {
       const firstTrackBuffer = this.firstTrack.bufferNode.buffer;
       const percentualRatio = Math.ceil(audioBuffer.length / firstTrackBuffer.length);
       const newAudioBuffer = this.audioCtx.createBuffer(audioBuffer.numberOfChannels, firstTrackBuffer.length * percentualRatio, firstTrackBuffer.sampleRate);
+      /* console.log(`newAudioBuffer duration: ${ newAudioBuffer.duration }`);
+      console.log(`oldAudioBuffer duration: ${ audioBuffer.duration }`);
+      console.log(`firstTrack duration: ${ this.firstTrack.duration }`); */
 
       // is this even needed or is it enough to:
       // newAudioBuffer.copyFromChannel(audioBuffer, 2, 0); ????
       for (let channel = 0; channel < newAudioBuffer.numberOfChannels; channel++) {
         const channelDataNew = newAudioBuffer.getChannelData(channel);
         const channelDataCurrent = audioBuffer.getChannelData(channel);
-        for (let i = 0; i < channelDataCurrent.length; i++)
-          channelDataNew[i] = channelDataCurrent[i];
+        channelDataNew.set(channelDataCurrent, 0);
       }
 
       finalAudioBuffer = newAudioBuffer;
@@ -65,6 +67,8 @@ export default class AudioLooper {
     const part = this.audioCtx.currentTime - this.firstTrack.startedAt;
     const numParts = Math.floor(part / this.firstTrack.duration);
     const offset = part - (numParts * this.firstTrack.duration);
+
+    const startTrackAt = isFirstTrack ? 0 : track.duration - offset;
 
     bufferNode.start(0, offset);
 
