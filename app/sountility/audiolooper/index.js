@@ -64,12 +64,13 @@ export default class AudioLooper {
     if (isFirstTrack)
       this.firstTrack = track;
 
+
+
     const part = this.audioCtx.currentTime - this.firstTrack.startedAt;
     const numParts = Math.floor(part / this.firstTrack.duration);
     const offset = part - (numParts * this.firstTrack.duration);
 
     const startTrackAt = isFirstTrack ? 0 : track.duration - offset;
-
     bufferNode.start(0, offset);
 
     // Return bufferNode, so user can connect it ecc.
