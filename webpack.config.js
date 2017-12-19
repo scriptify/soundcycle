@@ -26,8 +26,7 @@ const COMMON_CONFIGURATION = {
     alias: {
       'components': path.resolve(PATHS.app, 'components'),
       'icons': path.resolve(PATHS.app, 'icons'),
-      'stores': path.resolve(PATHS.app, 'stores'),
-      'sountility': path.join(PATHS.app, `sountility`)
+      'stores': path.resolve(PATHS.app, 'stores')
     }
   },
   output: {

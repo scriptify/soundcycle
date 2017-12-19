@@ -51,6 +51,7 @@
     "react-masonry-component": "*",
     "socket.io": "^2.0.1",
     "socket.io-client": "^2.0.2",
-    "tunajs": "^1.0.0"
+    "soundcyclejs": "0.0.2",
+    "webaudio-effect-units-collection": "^1.0.5"
   }
 }
