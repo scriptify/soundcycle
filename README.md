@@ -17,7 +17,7 @@ VIDEO
 
 __Note:__ If you have created something you want to share with other with Soundcycle, contact me (or issue a pull request) and I'll add it here.
 
-__Note:__ Until now I've just used and developed Soundcycle with the newer versions of Chrome. Browser support is something which has to be clarified yet (if you look a the [TODO list](/TODOs.md)). So I can't guarantee that it will work in your favourite browser. The same applies to mobile devices.
+__Note:__ Until now I've just used and developed Soundcycle with newer versions of Chrome. Browser support is something which has to be clarified yet (if you look a the [TODO list](/TODOs.md)). So I can't guarantee that it will work in your favourite browser. The same applies to mobile devices.
 
 ## Motivation :runner:
 The motivation for this project is a really personal one. I am a passionate beatboxer and I was always fascinated about loopstations. But since loopstations aren't that cheap to afford and everyone of us has a pretty suitable piece of hardware at home (I mean your computer) I thought: "Hey, why don't I try to create one myself?"
@@ -28,6 +28,22 @@ The project started out as school project, but now I would like to continue it w
 If you want to contribute to this project (no matter WHAT you want to do, it can also be something NON techical), have a look at the [CONTRIBUTION GUIDELINES](/CONTRIBUTING.md)
 
 Spoiler: __Everyone__ can do something to enhance Soundcycle.
+
+## Developing
+### Installing all dependencies
+```bash
+npm i
+```
+
+### Starting the development server
+```bash
+npm run start:dev
+```
+
+### Building the project
+```bash
+npm run start:prod
+```
 
 ## Code of conduct :globe_with_meridians:
 Have a look at [CODE_OF_CONDUCT.md](/CODE_OF_CONDUCT.md)

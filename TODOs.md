@@ -29,11 +29,12 @@ _Note:_
 - [FEATURE] Possiblity to group two or more chnls
 - [FEATURE] Possiblity to correct the first track of a looper until another track is added
 - [FEATURE] More advanced keyboard control
-- [UI] Add waiting screen --> until user grants mic access + error handling when he doesn't
-- [FEATURE] Saveing projects should be possible: Save locally (localStorage) or download as project file
+- [UI] Add waiting screen --> until user grants mic access + error handling when she/he doesn't
+- [FEATURE] Saving projects should be possible: Save locally (localStorage) or download as project file
 - [FEATURE] Clarify browser and device support
   - Which browsers will be supported?
   - Add according babel configurations to all packages
 - [GENERAL] Add testing to every module
 - [GENERAL] Introduce UI-benchmarks of all kinds --> What can be done better?
 - [GENERAL] Make it a PWA (ServiceWorkers etc.)
+- [GENERAL] Update dependencies
