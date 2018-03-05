@@ -1,5 +1,7 @@
 
-![Soundcycle logo](app/icons/logo.png "Soundcycle")
+<div style="text-align: center;">
+<img src="app/icons/logo.png" height="300" style="margin: 0 auto;">
+</div>
 
 # The first browser based software loopstation
 
@@ -14,11 +16,11 @@ Read the article on Medium I've written about Soundcycle:
 Navigate to [https://scriptify.github.io/soundcycle/](https://scriptify.github.io/soundcycle/) to see it in the wild.
 
 It may look like this when you create a song:
-GIF
+<img src="https://scriptify.github.io/soundcycle-docs/soundcycle.gif">
 
 Here are some example songs I recorded with Soundcycle for the sake of this documentation:
-- ![Sample 1](docs/sample1.wav "Sample 1")
-- ![Sample 2](docs/sample2.wav "Sample 2")
+- ![Sample 1](https://scriptify.github.io/soundcycle-docs/sample2.wav "Sample 1")
+- ![Sample 2](https://scriptify.github.io/soundcycle-docs/sample1.wav "Sample 2")
 
 For recording, I've used the Steinberg UR22 audio interface.
 
