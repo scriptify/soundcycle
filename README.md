@@ -16,8 +16,9 @@ Navigate to [https://scriptify.github.io/soundcycle/](https://scriptify.github.i
 It may look like this when you create a song:
 GIF
 
-Here are some example songs I recorded with Soundcycle:
-....
+Here are some example songs I recorded with Soundcycle for the sake of this documentation:
+- ![Sample 1](docs/sample1.wav "Sample 1")
+- ![Sample 2](docs/sample2.wav "Sample 2")
 
 For recording, I've used the Steinberg UR22 audio interface.
 
