@@ -28,7 +28,6 @@ export default class Welcome extends Component {
           <div className={`description`}>A software loopstation for musicians. Completely online.</div>
         </div>
         <div className={`buttons`}>
-          <div className={`btn`} onClick={this.props.onTutorial}>Tutorial</div>
           <div className={`btn`} onClick={this.props.onHide}>Let's go!</div>
         </div>
       </div>
