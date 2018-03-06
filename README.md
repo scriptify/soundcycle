@@ -10,7 +10,7 @@ Soundcycle is an open source software loopstation which runs entirely in your br
 
 __Note:__ It's now a long time ago since I started developing Soundcycle. I wanted to open source it earlier, but until now I didn't have time to. I hope that people like YOU can bring Soundcycle to another level, since I don't have time to do all of it alone!
 
-Read the article on Medium I've written about Soundcycle:
+Read the article on Medium I've written about Soundcycle: https://blog.hellojs.org/soundcycle-a-web-audio-project-in-search-for-astronauts-ec9b663dabba
 
 ## Using it :musical_note:
 Navigate to [https://scriptify.github.io/soundcycle/](https://scriptify.github.io/soundcycle/) to see it in the wild.
